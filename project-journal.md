@@ -15,3 +15,32 @@ Planning phase. Reviewing previous Azure labs and organizing the new project dir
 ### Next Task
 
 Create the initial project structure and outline the architecture for Phase 1.
+
+## June 10, 2026
+
+Created the initial Resource Group for the Azure Operations Lab.
+
+Resource Group:
+- rg-operationslab-dev
+
+Reason:
+The Resource Group will be used to organize all Phase 1 Azure resources for the project.
+
+Next task:
+Create the Storage Account using a low-cost configuration.
+
+Created Storage Account:
+
+- stoperationslab01
+
+Configuration:
+- Standard Performance
+- LRS Redundancy
+
+Learned:
+- Storage Accounts contain services such as Blob Storage.
+- Access Keys and Shared Access Signatures can be used to grant access.
+- Storage Accounts include built-in monitoring capabilities.
+
+Next Task:
+Explore Blob Containers and begin planning App Service deployment.
