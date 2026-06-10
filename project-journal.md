@@ -44,3 +44,8 @@ Learned:
 
 Next Task:
 Explore Blob Containers and begin planning App Service deployment.
+
+Personal Notes
+
+My understanding:
+A Storage Account provides several types of storage services, including Blob Storage, Files, Tables, and Queues. It serves as a central location for storing application and operational data.
