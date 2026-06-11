@@ -49,3 +49,14 @@ Personal Notes
 
 My understanding:
 A Storage Account provides several types of storage services, including Blob Storage, Files, Tables, and Queues. It serves as a central location for storing application and operational data.
+
+Attempted to deploy an App Service using the Free F1 tier.
+
+Result:
+Deployment validation failed during App Service Plan creation.
+
+Error:
+Microsoft.Web/serverFarms reported a quota-related validation error.
+
+Decision:
+Pause App Service deployment and continue defining the project architecture while investigating the subscription limitation.
