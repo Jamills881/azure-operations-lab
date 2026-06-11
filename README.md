@@ -40,7 +40,7 @@ This project intentionally avoids:
 
 ## Current Status
 
-Phase 0 – Planning
+Phase 1 – Planning
 
 Next Step:
 Define the initial architecture and Phase 1 resources.
