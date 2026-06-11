@@ -60,3 +60,22 @@ Microsoft.Web/serverFarms reported a quota-related validation error.
 
 Decision:
 Pause App Service deployment and continue defining the project architecture while investigating the subscription limitation.
+
+## Session Summary
+
+Completed:
+- Created Azure Operations Lab repository
+- Defined project goals and scope
+- Created Resource Group
+- Created Storage Account
+
+Issue Encountered:
+- App Service deployment failed due to a Microsoft.Web/serverFarms quota validation error.
+
+Decision:
+- Document the issue and continue the project without letting a single deployment problem derail progress.
+
+Next Session:
+- Investigate App Service deployment issue.
+- Finalize Phase 1 architecture.
+- Continue building the Azure Operations Lab.
