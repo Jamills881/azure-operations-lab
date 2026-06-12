@@ -79,3 +79,15 @@ Next Session:
 - Investigate App Service deployment issue.
 - Finalize Phase 1 architecture.
 - Continue building the Azure Operations Lab.
+
+- ### June 11, 2026
+
+**Created:**
+Log Analytics Workspace — `law-operationslab-dev` in `rg-operationslab-dev` (East US)
+
+**Reason:**
+Added a monitoring foundation for the Azure Operations Lab. This workspace will collect logs and metrics from Azure resources and support future alerting and diagnostics.
+
+**Next Task:**
+Connect an Azure resource (Storage Account) to this workspace using diagnostic settings.
+
