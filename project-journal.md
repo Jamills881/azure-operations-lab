@@ -91,3 +91,47 @@ Added a monitoring foundation for the Azure Operations Lab. This workspace will 
 **Next Task:**
 Connect an Azure resource (Storage Account) to this workspace using diagnostic settings.
 
+# Project Journal
+
+---
+
+## 2026-06-11 — Evening Session
+
+Tonight I focused on validating the monitoring setup for the Storage Account and confirming that metrics were flowing into the Log Analytics Workspace.
+
+Azure’s portal made this more confusing than expected, and I spent more time than planned trying to locate the correct diagnostic settings for blob service logs.
+
+After reviewing the setup, I decided not to let this block project progress.
+
+### Key Takeaways
+
+* Storage Account metrics are successfully flowing into Log Analytics.
+* Blob service logs are not currently configured.
+* Blob logs are not required for the next project phases.
+
+The important part is that the core monitoring foundation is working, and the Log Analytics Workspace is ready to support future monitoring scenarios such as VM insights, diagnostics, and alerting.
+
+### Decision
+
+Rather than getting stuck troubleshooting optional logging configuration, I chose to continue moving the project forward.
+
+This reflects a practical operations mindset: not every issue needs to be solved immediately if it is not blocking progress.
+
+### Current Status
+
+Completed:
+
+* Resource Group
+* Storage Account
+* Log Analytics Workspace
+* Storage metrics integration
+
+Current Issue:
+
+* App Service remains paused due to subscription-related deployment issues.
+
+### Next Step
+
+Move into networking by creating the Virtual Network and continue building out the Azure Operations Lab foundation.
+
+
