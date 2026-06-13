@@ -201,5 +201,35 @@ Learned:
 Next Task:
 Determine what workload should be deployed inside the subnet so networking and security can be tested further.
 
+## 2026-06-13 — Virtual Machine Deployment Session
+
+Created Linux Virtual Machine:
+
+* vm-operationslab-linux01
+
+Configuration:
+
+* Region: East US (Zone 2)
+* Size: Standard B1s
+* Operating System: Ubuntu Server 24.04 LTS
+* Authentication: SSH key
+* Private IP: 10.0.0.4
+* Public IP: Assigned by Azure
+
+Reason:
+Added a compute workload to the Azure Operations Lab so networking, security, and monitoring can be tested using a real resource.
+
+Learned:
+
+* A Virtual Machine is a software-based computer running in Azure.
+* The VM was deployed inside the virtual network and protected by the subnet’s NSG.
+* Even with a public IP, the VM is not automatically reachable from the internet.
+* Inbound access depends on NSG rules.
+
+Decision:
+The Azure-created default subnet and public IP will remain for now since neither blocks project progress.
+
+Next Task:
+Connect the VM to Log Analytics and begin monitoring compute metrics and activity.
 
 
