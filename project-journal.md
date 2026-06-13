@@ -181,4 +181,25 @@ Learned:
 Next Task:
 Associate the NSG with a subnet and begin understanding how security rules affect traffic flow.
 
+## 2026-06-12 — NSG Association Session
+
+Associated Network Security Group with subnet:
+
+* NSG: nsg-operationslab-main
+* Virtual Network: vnet-operationslab-dev
+* Subnet: subnet-main
+
+Reason:
+Applied security controls to the subnet so traffic can be filtered using NSG rules.
+
+Learned:
+
+* Creating an NSG alone does not protect resources.
+* The NSG must be associated with a subnet or NIC.
+* Once associated, all traffic entering or leaving resources in that subnet is evaluated against NSG rules.
+
+Next Task:
+Determine what workload should be deployed inside the subnet so networking and security can be tested further.
+
+
 
