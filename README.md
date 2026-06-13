@@ -29,20 +29,30 @@ This project intentionally avoids:
 
 ---
 
-## Skills Demonstrated
+## Skills Demonstrated (Completed)
 
 * Resource Groups
+* Storage Accounts
 * Virtual Networks
 * Network Security Groups
-* App Service *(currently paused due to subscription limitation)*
+* Virtual Machines
+* Linux Administration Basics
+* Azure Monitor
+* Log Analytics
+* Public vs Private IP Concepts
+* PowerShell
+* Bicep
+
+---
+
+## Planned Skills
+
 * Azure SQL Database
 * Key Vault
 * Managed Identity
-* Azure Monitor
-* Log Analytics
 * Alerts
-* PowerShell
-* Bicep
+* VM Monitoring and Diagnostics
+* Automation Workflows
 
 ---
 
@@ -55,14 +65,14 @@ Project principles:
 * Calm, steady pacing
 * No overengineering
 * Build one resource or feature at a time
-* Understand **why** before deploying anything
+* Understand why before deploying anything
 * Explore each resource after deployment
 * Document what was learned
 * Prioritize interview value over certification coverage
 
-Documentation should reflect real-world administrator work, including deployment decisions, troubleshooting, configuration choices, and lessons learned.
+Documentation reflects real-world administrator work, including deployment decisions, troubleshooting, configuration choices, and lessons learned.
 
-Each phase should move the project closer to a complete, interview-ready Azure environment.
+Each phase moves the project closer to a complete, interview-ready Azure environment.
 
 ---
 
@@ -70,7 +80,7 @@ Each phase should move the project closer to a complete, interview-ready Azure e
 
 ### Current Phase
 
-Phase 1 — Foundation
+**Phase 1 — Foundation**
 
 ### Completed
 
@@ -81,11 +91,16 @@ Phase 1 — Foundation
 * Resource Group deployed
 * Storage Account deployed
 * Log Analytics Workspace deployed
+* Virtual Network deployed
+* Network Security Group deployed
+* Network Security Group associated with subnet
+* Linux Virtual Machine deployed
 
-### Current Issue
+### Current Issues
 
-* App Service deployment is currently paused due to a `Microsoft.Web/serverFarms` subscription/quota-related validation error
+* App Service deployment is paused due to a `Microsoft.Web/serverFarms` subscription/quota-related validation error
+* Azure automatically created a default subnet and assigned a public IP to the VM; both remain in place since they do not block project progress
 
 ### Next Step
 
-Continue building Phase 1 while investigating the App Service limitation.
+Connect the Linux Virtual Machine to Log Analytics and begin exploring monitoring, metrics, and diagnostics.
