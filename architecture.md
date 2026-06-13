@@ -42,7 +42,8 @@ The initial Azure environment contains the foundational resources needed to supp
 
 **Status:** Completed
 
-**Purpose:** Control inbound and outbound network traffic using firewall-style security rules applied to subnet-main.
+**Purpose:** 
+Control inbound and outbound network traffic using firewall-style security rules applied to subnet-main.
 ---
 
 ### App Service
