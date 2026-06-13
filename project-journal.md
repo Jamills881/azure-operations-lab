@@ -232,4 +232,27 @@ The Azure-created default subnet and public IP will remain for now since neither
 Next Task:
 Connect the VM to Log Analytics and begin monitoring compute metrics and activity.
 
+## 2026-06-13 — Cost Management Setup
+
+Created Azure budget alerts for the lab subscription.
+
+Configuration:
+
+* Budget Limit: $10
+* Forecast Alert: 80%
+* Actual Cost Alert: 90%
+
+Reason:
+Added cost controls to prevent unexpected Azure charges while continuing to build the lab environment.
+
+Learned:
+
+* Azure budgets help monitor and control cloud spending.
+* Forecast alerts provide proactive warnings based on projected usage.
+* Cost alerts notify when actual spending reaches a defined threshold.
+
+Next Task:
+Continue building the lab while monitoring resource costs, especially VM compute usage.
+
+
 
