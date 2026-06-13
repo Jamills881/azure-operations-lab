@@ -9,6 +9,7 @@ The initial Azure environment contains the foundational resources needed to supp
 ### Resource Group
 
 **Status:** Completed
+
 **Purpose:** Provide a logical container for all project resources.
 
 ---
@@ -16,6 +17,7 @@ The initial Azure environment contains the foundational resources needed to supp
 ### Storage Account
 
 **Status:** Completed
+
 **Purpose:** Store project files and provide exposure to Azure Storage concepts such as blobs, access control, monitoring, and logging.
 
 ---
@@ -23,6 +25,7 @@ The initial Azure environment contains the foundational resources needed to supp
 ### Log Analytics Workspace
 
 **Status:** Completed
+
 **Purpose:** Serve as the central location for monitoring data, diagnostics, and future alerting.
 
 ---
@@ -30,6 +33,7 @@ The initial Azure environment contains the foundational resources needed to supp
 ### Virtual Network
 
 **Status:** Completed
+
 **Purpose:** Provide private networking for Azure resources and introduce core infrastructure concepts such as address spaces and subnets.
 
 ---
@@ -37,6 +41,7 @@ The initial Azure environment contains the foundational resources needed to supp
 ### Network Security Group
 
 **Status:** Completed
+
 **Purpose:** Control inbound and outbound network traffic using firewall-style security rules.
 
 ---
@@ -44,6 +49,7 @@ The initial Azure environment contains the foundational resources needed to supp
 ### App Service
 
 **Status:** Paused
+
 **Purpose:** Originally intended to host a simple web application that could later be monitored, secured, and automated.
 
 **Current Issue:**
