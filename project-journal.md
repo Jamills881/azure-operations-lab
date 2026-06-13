@@ -134,4 +134,27 @@ Current Issue:
 
 Move into networking by creating the Virtual Network and continue building out the Azure Operations Lab foundation.
 
+## 2026-06-12 — Virtual Network Session
+
+Created Virtual Network:
+
+* vnet-operationslab-dev
+
+Configuration:
+
+* Address Space: 10.0.0.0/16
+* Subnet: subnet-main
+* Subnet Range: 10.0.1.0/24
+
+Reason:
+Added foundational networking to the Azure Operations Lab.
+
+Learned:
+
+* A Virtual Network acts as a private network inside Azure.
+* Subnets divide the VNet into smaller logical network segments.
+* Azure resources such as VMs, private endpoints, and application services can be placed inside subnets.
+
+Next Task:
+Explore network security by adding a Network Security Group (NSG).
 
