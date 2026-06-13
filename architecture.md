@@ -3,29 +3,43 @@
 ## Phase 1 — Foundation
 
 The initial Azure environment contains the foundational resources needed to support future networking, monitoring, security, and automation.
-Network Security Group
-Status: Completed
-Purpose: Control inbound and outbound network traffic using firewall-style security rules.
+
+---
 
 ### Resource Group
 
 **Status:** Completed
 **Purpose:** Provide a logical container for all project resources.
 
+---
+
 ### Storage Account
 
 **Status:** Completed
 **Purpose:** Store project files and provide exposure to Azure Storage concepts such as blobs, access control, monitoring, and logging.
+
+---
 
 ### Log Analytics Workspace
 
 **Status:** Completed
 **Purpose:** Serve as the central location for monitoring data, diagnostics, and future alerting.
 
+---
+
 ### Virtual Network
 
 **Status:** Completed
 **Purpose:** Provide private networking for Azure resources and introduce core infrastructure concepts such as address spaces and subnets.
+
+---
+
+### Network Security Group
+
+**Status:** Completed
+**Purpose:** Control inbound and outbound network traffic using firewall-style security rules.
+
+---
 
 ### App Service
 
@@ -73,8 +87,6 @@ Planned resources:
 
 Planned improvements:
 
-* Network Security Groups (NSGs)
 * Additional subnets
-* Private endpoints
 * Security hardening
 * Documentation refinement
