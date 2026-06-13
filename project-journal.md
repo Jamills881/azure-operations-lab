@@ -158,3 +158,27 @@ Learned:
 Next Task:
 Explore network security by adding a Network Security Group (NSG).
 
+## 2026-06-12 — Network Security Group Session
+
+Created Network Security Group:
+
+* nsg-operationslab-main
+
+Configuration:
+
+* Region: East US
+* Associated Resource Group: rg-operationslab-dev
+
+Reason:
+Added network security controls to the Azure Operations Lab to manage inbound and outbound traffic between Azure resources.
+
+Learned:
+
+* An NSG acts like a firewall for Azure networking.
+* NSG rules determine which traffic is allowed or denied.
+* Azure includes default inbound and outbound security rules.
+
+Next Task:
+Associate the NSG with a subnet and begin understanding how security rules affect traffic flow.
+
+
