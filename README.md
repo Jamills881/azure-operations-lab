@@ -42,6 +42,8 @@ This project intentionally avoids:
 * Public vs Private IP Concepts
 * PowerShell
 * Bicep
+* Azure Cost Management
+* Budget Alerts
 
 ---
 
