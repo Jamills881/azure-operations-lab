@@ -60,6 +60,14 @@ App Service is paused and does not currently block project progress.
 
 ---
 
+### Virtual Machine
+
+**Status:** Completed
+
+**Purpose:** Provide a compute workload inside the virtual network so networking, security, and monitoring can be tested using a real resource.
+
+---
+
 ## Phase 2 — Security & Identity
 
 Planned resources:
