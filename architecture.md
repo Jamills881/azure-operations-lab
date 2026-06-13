@@ -3,6 +3,9 @@
 ## Phase 1 — Foundation
 
 The initial Azure environment contains the foundational resources needed to support future networking, monitoring, security, and automation.
+Network Security Group
+Status: Completed
+Purpose: Control inbound and outbound network traffic using firewall-style security rules.
 
 ### Resource Group
 
