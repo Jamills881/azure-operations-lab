@@ -76,6 +76,12 @@ Planned resources:
 * Key Vault
 * Managed Identity
 
+* ### Key Vault
+
+**Status:** Completed
+
+**Purpose:** Securely store secrets, passwords, certificates, and encryption keys while enforcing RBAC-based access control.
+
 ---
 
 ## Phase 3 — Monitoring & Operations
