@@ -315,35 +315,34 @@ This reinforced the importance of cost governance in cloud environments. Product
 Next Task:
 Continue building the Azure Operations Lab by moving into Phase 2 or revisiting monitoring enhancements.
 
-## 2026-06-16 — Key Vault Deployment
+## 2026-06-16 — Azure Key Vault
 
-Today I deployed an Azure Key Vault as part of Phase 2 (Security & Identity).
+### Why
+Learn how Azure securely stores secrets such as passwords, certificates, and encryption keys.
 
+### What I Built
 Resource:
 - kv-operationslab-jarrod
 
-Purpose:
-The Key Vault provides secure centralized storage for sensitive data such as passwords, secrets, certificates, and encryption keys.
+Configured:
+- RBAC permission model
+- Created first secret: sql-admin-password
+- Assigned Key Vault Secrets Officer role
 
-Work completed:
-- Created Azure Key Vault using RBAC permission model
-- Explored secrets, keys, and certificates
-- Attempted to create a secret and encountered RBAC authorization failure
-- Investigated IAM permissions
-- Assigned Key Vault Secrets Officer role to my account
-- Successfully created first secret:
-  - sql-admin-password
+### What I Learned
+- Key Vault stores secrets, keys, and certificates.
+- Azure separates control-plane and data-plane permissions.
+- Control-plane access lets you manage the vault resource.
+- Data-plane access controls access to secrets inside the vault.
+- RBAC roles determine who can create or read secrets.
 
-Key Learning:
-Azure Key Vault separates control-plane access from data-plane access.
+### Problem Encountered
+- Secret creation initially failed with RBAC "Forbidden" error.
 
-Control-plane permissions allow management of the Key Vault resource itself (deployment, settings, IAM).
+### Resolution
+- Investigated IAM permissions.
+- Assigned Key Vault Secrets Officer role.
+- Retested successfully.
 
-Data-plane permissions control access to the actual contents inside the vault such as secrets, keys, and certificates.
-
-Even though I could deploy and manage the Key Vault, I initially could not create secrets until the appropriate RBAC role was assigned.
-
-Reflection:
-This was a strong real-world IAM troubleshooting scenario. The workflow felt similar to permission-based troubleshooting in enterprise IT environments where authentication succeeds but authorization fails due to missing access roles.
-
-
+### Real-World Connection
+This felt similar to Expedient’s password vault, where privileged passwords required approval and justification before access. Both systems enforce least privilege and protect sensitive credentials through controlled access.
