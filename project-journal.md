@@ -254,5 +254,42 @@ Learned:
 Next Task:
 Continue building the lab while monitoring resource costs, especially VM compute usage.
 
+## 2026-06-14 — VM Monitoring Investigation
+
+Today I explored monitoring options for the Linux virtual machine and investigated how Azure collects performance and diagnostic data.
+
+I reviewed the VM Insights dashboard and confirmed Azure is already collecting basic platform metrics, including:
+
+* CPU utilization
+* Network traffic
+* Disk I/O
+* Availability status
+
+These metrics are available by default without additional configuration.
+
+I also investigated VM diagnostic settings and discovered Azure provides both legacy and modern monitoring paths.
+
+Learned:
+
+* The legacy Azure Diagnostics extension sends guest diagnostics to a Storage Account and is being deprecated.
+* Modern Azure monitoring uses Azure Monitor Agent (AMA), Data Collection Rules (DCRs), and workspace-based telemetry.
+* Platform metrics and guest OS metrics are different layers of monitoring.
+* Guest-level monitoring provides deeper visibility into memory usage, processes, filesystem utilization, and operating system telemetry.
+
+Decision:
+
+Do not enable enhanced monitoring yet.
+
+Reason:
+The enhanced monitoring path introduces additional complexity, including Data Collection Rules, Azure Monitor Agent configuration, and potential additional cost.
+
+This does not block project progress and can be revisited later when deeper monitoring is needed.
+
+Reflection:
+
+This monitoring workflow felt familiar to prior infrastructure experience using VMware vSphere at Expedient, where CPU and disk usage alerts were common. The main difference is learning Azure’s cloud-native monitoring stack instead of traditional virtualization tools.
+
+Next Task:
+Decide whether to revisit enhanced monitoring later or move into Phase 2 resources.
 
 
