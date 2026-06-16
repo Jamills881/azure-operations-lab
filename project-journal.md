@@ -292,57 +292,54 @@ This monitoring workflow felt familiar to prior infrastructure experience using 
 Next Task:
 Decide whether to revisit enhanced monitoring later or move into Phase 2 resources.
 
-## 2026-06-16 — VM Auto-Shutdown Configuration
+## 2026-06-16 — Key Vault Deployment
 
-Today I configured automatic shutdown for the Linux virtual machine to reduce unnecessary compute costs.
+Today I deployed an Azure Key Vault as part of Phase 2 (Security & Identity).
 
-Configuration:
-- VM: vm-operationslab-linux01
-- Auto-shutdown: Enabled
-- Shutdown Time: 12:00 AM Eastern Time
-
-Reason:
-The virtual machine does not need to run 24/7 for this lab. Enabling auto-shutdown helps prevent accidental overnight runtime and reduces Azure compute costs.
-
-Learned:
-- Azure VMs continue generating compute costs while running.
-- Auto-shutdown deallocates the VM and helps reduce unnecessary spending.
-- Cost management is an important operational responsibility in cloud administration.
-
-Reflection:
-This reinforced the importance of cost governance in cloud environments. Production systems may run continuously, but development and lab systems often benefit from scheduled shutdown policies to optimize resource usage.
-
-Next Task:
-Continue building the Azure Operations Lab by moving into Phase 2 or revisiting monitoring enhancements.
-
-## 2026-06-16 — Azure Key Vault
-
-### Why
-Learn how Azure securely stores secrets such as passwords, certificates, and encryption keys.
-
-### What I Built
 Resource:
 - kv-operationslab-jarrod
 
-Configured:
-- RBAC permission model
-- Created first secret: sql-admin-password
-- Assigned Key Vault Secrets Officer role
+### Why We Built This
+The goal of Key Vault is to securely store sensitive information such as passwords, secrets, certificates, and encryption keys instead of storing them in plain text inside scripts, applications, or configuration files.
 
-### What I Learned
-- Key Vault stores secrets, keys, and certificates.
-- Azure separates control-plane and data-plane permissions.
-- Control-plane access lets you manage the vault resource.
-- Data-plane access controls access to secrets inside the vault.
-- RBAC roles determine who can create or read secrets.
+### What Happened During the Build
+I successfully created the Key Vault using the RBAC permission model and began exploring the Secrets section.
 
-### Problem Encountered
-- Secret creation initially failed with RBAC "Forbidden" error.
+When I attempted to create my first secret (`sql-admin-password`), Azure returned a **Forbidden** error.
 
-### Resolution
-- Investigated IAM permissions.
-- Assigned Key Vault Secrets Officer role.
-- Retested successfully.
+At first this was confusing because I had successfully created the Key Vault, so I assumed I had full access.
+
+After investigating the error, I learned that Azure separates **control-plane** and **data-plane** permissions.
+
+I had enough permissions to:
+- create and manage the Key Vault resource
+- configure IAM settings
+
+But I did **not** have permission to:
+- create or read secrets inside the vault
+
+To resolve this, I assigned myself the **Key Vault Secrets Officer** role in RBAC and retried the operation.
+
+After waiting for role propagation, the secret was successfully created.
+
+### Key Technical Learning
+- Key Vault stores secrets, keys, and certificates
+- Control-plane permissions manage the vault resource itself
+- Data-plane permissions control access to vault contents
+- RBAC can allow resource management while still blocking secret access
+- Least privilege is critical when assigning access
 
 ### Real-World Connection
-This felt similar to Expedient’s password vault, where privileged passwords required approval and justification before access. Both systems enforce least privilege and protect sensitive credentials through controlled access.
+This immediately reminded me of a password management system I used at Expedient.
+
+We stored privileged client credentials in a secure vault. Some passwords could not simply be viewed on demand. We had to request access, provide justification for why we needed the password, and wait for approval before access was granted.
+
+That helped Key Vault click for me.
+
+The technology is different, but the security concept feels very similar:
+sensitive credentials should be protected, access should be controlled, and privileged actions should be auditable.
+
+### Reflection
+This felt like a real IAM troubleshooting scenario rather than just a lab exercise.
+
+The biggest takeaway for me was realizing that many Azure security concepts are not completely new—they often map back to security workflows I have already seen in enterprise IT.
