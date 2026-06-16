@@ -292,4 +292,27 @@ This monitoring workflow felt familiar to prior infrastructure experience using 
 Next Task:
 Decide whether to revisit enhanced monitoring later or move into Phase 2 resources.
 
+## 2026-06-16 — VM Auto-Shutdown Configuration
+
+Today I configured automatic shutdown for the Linux virtual machine to reduce unnecessary compute costs.
+
+Configuration:
+- VM: vm-operationslab-linux01
+- Auto-shutdown: Enabled
+- Shutdown Time: 12:00 AM Eastern Time
+
+Reason:
+The virtual machine does not need to run 24/7 for this lab. Enabling auto-shutdown helps prevent accidental overnight runtime and reduces Azure compute costs.
+
+Learned:
+- Azure VMs continue generating compute costs while running.
+- Auto-shutdown deallocates the VM and helps reduce unnecessary spending.
+- Cost management is an important operational responsibility in cloud administration.
+
+Reflection:
+This reinforced the importance of cost governance in cloud environments. Production systems may run continuously, but development and lab systems often benefit from scheduled shutdown policies to optimize resource usage.
+
+Next Task:
+Continue building the Azure Operations Lab by moving into Phase 2 or revisiting monitoring enhancements.
+
 
