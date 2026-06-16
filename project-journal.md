@@ -315,4 +315,35 @@ This reinforced the importance of cost governance in cloud environments. Product
 Next Task:
 Continue building the Azure Operations Lab by moving into Phase 2 or revisiting monitoring enhancements.
 
+## 2026-06-16 — Key Vault Deployment
+
+Today I deployed an Azure Key Vault as part of Phase 2 (Security & Identity).
+
+Resource:
+- kv-operationslab-jarrod
+
+Purpose:
+The Key Vault provides secure centralized storage for sensitive data such as passwords, secrets, certificates, and encryption keys.
+
+Work completed:
+- Created Azure Key Vault using RBAC permission model
+- Explored secrets, keys, and certificates
+- Attempted to create a secret and encountered RBAC authorization failure
+- Investigated IAM permissions
+- Assigned Key Vault Secrets Officer role to my account
+- Successfully created first secret:
+  - sql-admin-password
+
+Key Learning:
+Azure Key Vault separates control-plane access from data-plane access.
+
+Control-plane permissions allow management of the Key Vault resource itself (deployment, settings, IAM).
+
+Data-plane permissions control access to the actual contents inside the vault such as secrets, keys, and certificates.
+
+Even though I could deploy and manage the Key Vault, I initially could not create secrets until the appropriate RBAC role was assigned.
+
+Reflection:
+This was a strong real-world IAM troubleshooting scenario. The workflow felt similar to permission-based troubleshooting in enterprise IT environments where authentication succeeds but authorization fails due to missing access roles.
+
 
