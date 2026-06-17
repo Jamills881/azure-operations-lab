@@ -342,4 +342,101 @@ sensitive credentials should be protected, access should be controlled, and priv
 ### Reflection
 This felt like a real IAM troubleshooting scenario rather than just a lab exercise.
 
+## 2026-06-17 — Key Vault & Managed Identity
+
+### What Was Built
+
+Azure Key Vault was deployed to support secure secret storage for the environment.
+
+A test secret (`sql-admin-password`) was created after resolving initial RBAC restrictions.
+
+System-assigned Managed Identity was enabled on `vm-operationslab-linux01`, allowing the VM to authenticate to Azure services without storing credentials locally.
+
+The VM’s identity was granted the **Key Vault Secrets User** role, completing the access path between the VM and Key Vault.
+
+---
+
+### Key Observations
+
+Secret creation initially failed with a **Forbidden (RBAC)** error.
+
+This highlighted a core Azure concept:
+
+* **Control-plane access** — managing the Key Vault resource
+* **Data-plane access** — reading and writing secrets
+
+Permission to deploy and manage a Key Vault does not automatically grant access to the secrets stored inside it.
+
+Assigning the **Key Vault Secrets Officer** role resolved the issue and allowed secret creation to proceed normally.
+
+---
+
+### What Was Learned
+
+* Managed Identity provides an Azure-issued identity but does not grant permissions by itself.
+* RBAC determines what that identity can access.
+* Key Vault enforces strict separation between resource management and secret access.
+* Authentication (identity) and authorization (permissions) are separate steps in Azure’s security model.
+* The end-to-end flow between VM → Managed Identity → RBAC → Key Vault became much clearer through this configuration.
+
+Access flow:
+
+VM
+↓
+Managed Identity proves identity
+↓
+RBAC checks permissions
+↓
+Key Vault allows or denies access
+↓
+Secret returned if authorized
+
+An important takeaway was understanding that assigning permissions does not automatically cause the VM to retrieve secrets. Something running on the VM, such as a script or application, must actively request access to Key Vault.
+
+---
+
+### Real-World Connection
+
+This setup resembles privileged password systems used in traditional infrastructure environments.
+
+Access to sensitive credentials is controlled, audited, and restricted, similar to the password vault processes used at Expedient.
+
+Azure’s approach automates this through identities and tokens instead of manual credential retrieval.
+
+Managed Identity also feels similar to service accounts or machine trust relationships used in traditional infrastructure.
+
+---
+
+### Challenges & Resolution
+
+**Issue:** Secret creation blocked by RBAC
+**Cause:** Missing data-plane permissions
+
+**Resolution:**
+
+* Verified Key Vault deployment
+* Reviewed IAM permissions
+* Identified missing role assignment
+* Assigned **Key Vault Secrets Officer** role
+* Allowed time for RBAC propagation
+
+**Outcome:** Secret creation succeeded, and the VM now has the required permissions to access secrets in Key Vault.
+
+---
+
+### Why This Matters
+
+This configuration reflects common production patterns where applications and virtual machines retrieve secrets securely without storing credentials locally.
+
+This phase reinforced several important Azure administration concepts:
+
+* Identity
+* RBAC
+* Least privilege
+* Secret management
+* Authentication vs authorization
+
+This was one of the strongest examples so far of how Azure security concepts map to real-world infrastructure workflows.
+
+
 The biggest takeaway for me was realizing that many Azure security concepts are not completely new—they often map back to security workflows I have already seen in enterprise IT.
