@@ -256,91 +256,167 @@ Continue building the lab while monitoring resource costs, especially VM compute
 
 ## 2026-06-14 — VM Monitoring Investigation
 
-Today I explored monitoring options for the Linux virtual machine and investigated how Azure collects performance and diagnostic data.
+### What Was Explored
 
-I reviewed the VM Insights dashboard and confirmed Azure is already collecting basic platform metrics, including:
+Monitoring options for the Linux virtual machine were reviewed to better understand how Azure collects performance and diagnostic data.
+
+The VM Insights dashboard showed Azure is already collecting basic platform metrics by default, including:
 
 * CPU utilization
 * Network traffic
 * Disk I/O
 * Availability status
 
-These metrics are available by default without additional configuration.
+These metrics were available without additional configuration.
 
-I also investigated VM diagnostic settings and discovered Azure provides both legacy and modern monitoring paths.
+Diagnostic settings and monitoring options were also reviewed to understand Azure’s different monitoring paths.
 
-Learned:
+---
 
-* The legacy Azure Diagnostics extension sends guest diagnostics to a Storage Account and is being deprecated.
-* Modern Azure monitoring uses Azure Monitor Agent (AMA), Data Collection Rules (DCRs), and workspace-based telemetry.
-* Platform metrics and guest OS metrics are different layers of monitoring.
-* Guest-level monitoring provides deeper visibility into memory usage, processes, filesystem utilization, and operating system telemetry.
+### Key Observations
 
-Decision:
+Azure currently provides both legacy and modern approaches for VM monitoring.
 
-Do not enable enhanced monitoring yet.
+* **Legacy monitoring** uses the Azure Diagnostics extension and sends guest diagnostics to a Storage Account.
+* **Modern monitoring** uses Azure Monitor Agent (AMA), Data Collection Rules (DCRs), and workspace-based telemetry.
 
-Reason:
-The enhanced monitoring path introduces additional complexity, including Data Collection Rules, Azure Monitor Agent configuration, and potential additional cost.
+This highlighted an important distinction between:
+
+* **Platform metrics** — metrics Azure collects automatically from the infrastructure layer
+* **Guest OS metrics** — deeper operating system telemetry collected from inside the VM
+
+Guest-level monitoring provides additional visibility into:
+
+* Memory usage
+* Running processes
+* Filesystem utilization
+* Operating system performance
+
+---
+
+### What Was Learned
+
+* Basic platform metrics are available by default in Azure.
+* Guest-level monitoring requires additional configuration.
+* Azure is moving away from legacy diagnostics toward AMA and DCR-based monitoring.
+* Enhanced monitoring introduces more configuration complexity and potential additional cost.
+
+---
+
+### Decision
+
+Enhanced monitoring was not enabled at this stage.
+
+**Reason:**
+The enhanced monitoring path introduces additional complexity, including:
+
+* Azure Monitor Agent configuration
+* Data Collection Rules
+* Additional telemetry configuration
+* Potential extra cost
 
 This does not block project progress and can be revisited later when deeper monitoring is needed.
 
-Reflection:
+---
 
-This monitoring workflow felt familiar to prior infrastructure experience using VMware vSphere at Expedient, where CPU and disk usage alerts were common. The main difference is learning Azure’s cloud-native monitoring stack instead of traditional virtualization tools.
+### Real-World Connection
 
-Next Task:
-Decide whether to revisit enhanced monitoring later or move into Phase 2 resources.
+This monitoring workflow felt similar to infrastructure monitoring performed in VMware vSphere at Expedient, where alerts for high CPU usage, disk usage, and resource health were common.
+
+The main difference is the monitoring stack.
+
+Traditional environments relied on virtualization tools such as vSphere, while Azure uses cloud-native services such as Azure Monitor, Log Analytics, and Data Collection Rules.
+
+---
+
+### Why This Matters
+
+Monitoring is a core responsibility in infrastructure and cloud administration.
+
+Understanding the difference between default platform metrics and deeper guest telemetry is important for troubleshooting performance issues, resource health, and alerting strategy.
 
 ## 2026-06-16 — Key Vault Deployment
 
-Today I deployed an Azure Key Vault as part of Phase 2 (Security & Identity).
+### What Was Built
+
+Azure Key Vault was deployed as part of Phase 2 (Security & Identity).
 
 Resource:
-- kv-operationslab-jarrod
 
-### Why We Built This
-The goal of Key Vault is to securely store sensitive information such as passwords, secrets, certificates, and encryption keys instead of storing them in plain text inside scripts, applications, or configuration files.
+* kv-operationslab-jarrod
 
-### What Happened During the Build
-I successfully created the Key Vault using the RBAC permission model and began exploring the Secrets section.
+The vault was configured using the **RBAC permission model** to control access to secrets and other sensitive data.
 
-When I attempted to create my first secret (`sql-admin-password`), Azure returned a **Forbidden** error.
+---
 
-At first this was confusing because I had successfully created the Key Vault, so I assumed I had full access.
+### Key Observations
 
-After investigating the error, I learned that Azure separates **control-plane** and **data-plane** permissions.
+Secret creation initially failed with a **Forbidden** RBAC error.
 
-I had enough permissions to:
-- create and manage the Key Vault resource
-- configure IAM settings
+This highlighted an important Azure security concept:
 
-But I did **not** have permission to:
-- create or read secrets inside the vault
+* **Control-plane access** — managing the Key Vault resource
+* **Data-plane access** — accessing secrets, keys, and certificates
 
-To resolve this, I assigned myself the **Key Vault Secrets Officer** role in RBAC and retried the operation.
+Permission to deploy and manage a Key Vault does not automatically grant permission to the secrets stored inside it.
 
-After waiting for role propagation, the secret was successfully created.
+Available permissions allowed:
 
-### Key Technical Learning
-- Key Vault stores secrets, keys, and certificates
-- Control-plane permissions manage the vault resource itself
-- Data-plane permissions control access to vault contents
-- RBAC can allow resource management while still blocking secret access
-- Least privilege is critical when assigning access
+* Key Vault deployment
+* Resource management
+* IAM configuration
+
+Missing permissions prevented:
+
+* Secret creation
+* Secret retrieval
+
+---
+
+### What Was Learned
+
+* Key Vault securely stores secrets, keys, and certificates.
+* Azure separates resource management from secret access.
+* RBAC can allow management access while still blocking data access.
+* Least privilege is important when assigning access to sensitive resources.
+
+---
+
+### Challenges & Resolution
+
+**Issue:** Secret creation blocked by RBAC
+**Cause:** Missing data-plane permissions
+
+**Resolution:**
+
+* Reviewed IAM configuration
+* Identified missing role assignment
+* Assigned **Key Vault Secrets Officer** role
+* Allowed time for RBAC propagation
+
+**Outcome:** Secret creation succeeded and secret access became available.
+
+---
 
 ### Real-World Connection
-This immediately reminded me of a password management system I used at Expedient.
 
-We stored privileged client credentials in a secure vault. Some passwords could not simply be viewed on demand. We had to request access, provide justification for why we needed the password, and wait for approval before access was granted.
+This closely resembles privileged credential vault systems used at Expedient.
 
-That helped Key Vault click for me.
+Sensitive client credentials were stored in a secure password management system, and some credentials required approval and justification before access was granted.
 
-The technology is different, but the security concept feels very similar:
-sensitive credentials should be protected, access should be controlled, and privileged actions should be auditable.
+The technology differs, but the security principles are very similar:
 
-### Reflection
-This felt like a real IAM troubleshooting scenario rather than just a lab exercise.
+* Sensitive credentials should be protected
+* Access should be restricted
+* Privileged actions should be auditable
+
+---
+
+### Why This Matters
+
+Key Vault is a core Azure security service used to prevent credentials from being stored in plaintext inside scripts, applications, or configuration files.
+
+Understanding Key Vault also reinforces broader cloud security concepts such as RBAC, least privilege, and secure credential management.
 
 ## 2026-06-17 — Key Vault & Managed Identity
 
