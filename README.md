@@ -1,108 +1,95 @@
 # Azure Operations Lab
 
-## Purpose
+## Project Overview
+Azure Operations Lab is a hands-on cloud infrastructure project built to simulate real-world systems administration and cloud operations tasks.
 
-This project is a hands-on Azure environment designed to demonstrate real-world cloud administration skills. It focuses on infrastructure, networking, identity, monitoring, and automation — the core responsibilities of Azure Administrator, Systems Administrator, Infrastructure Engineer, and Cloud Operations roles.
+The goal of this project is to strengthen practical experience in:
 
-The project was created to gain practical Azure experience outside of my day-to-day IT Analyst responsibilities and to build a portfolio that demonstrates cloud administration skills.
+- Azure infrastructure administration
+- Identity and access management
+- Monitoring and alerting
+- Infrastructure automation
+- Security and networking
 
----
-
-## Project Goals
-
-* Build a complete Azure environment
-* Practice Azure administration using real services
-* Demonstrate networking, identity, security, monitoring, and automation
-* Document the environment clearly for GitHub and interview discussions
+This lab is designed around real operational workflows rather than certification-only exercises.
 
 ---
 
-## Non-Goals
+## Current Project Status
 
-This project intentionally avoids:
+### Phase 1 — Foundation ✅ Completed
+Core Azure infrastructure deployed:
 
-* Advanced software development
-* Complex web applications
-* AI/ML workloads
-* Kubernetes
-* Large enterprise-scale architectures
+- Resource Group
+- Storage Account
+- Log Analytics Workspace
+- Virtual Network (VNet)
+- Network Security Group (NSG)
+- Linux Virtual Machine
 
----
-
-## Skills Demonstrated (Completed)
-
-* Resource Groups
-* Storage Accounts
-* Virtual Networks
-* Network Security Groups
-* Virtual Machines
-* Linux Administration Basics
-* Azure Monitor
-* Log Analytics
-* Public vs Private IP Concepts
-* PowerShell
-* Bicep
-* Azure Cost Management
-* Budget Alerts
+Skills demonstrated:
+- Azure resource deployment
+- Network segmentation
+- Subnet security controls
+- VM provisioning
+- Basic monitoring architecture
 
 ---
 
-## Planned Skills
+### Phase 2 — Security & Identity 🔄 In Progress
+Current focus:
 
-* Azure SQL Database
-* Key Vault
-* Managed Identity
-* Alerts
-* VM Monitoring and Diagnostics
-* Automation Workflows
+- Azure SQL Database
+- Key Vault
+- Managed Identity
+- Role-based access control (RBAC)
 
----
-
-## Project Approach
-
-This project follows a practical, step-by-step approach designed to build real Azure administration experience without unnecessary complexity.
-
-Project principles:
-
-* Calm, steady pacing
-* No overengineering
-* Build one resource or feature at a time
-* Understand why before deploying anything
-* Explore each resource after deployment
-* Document what was learned
-* Prioritize interview value over certification coverage
-
-Documentation reflects real-world administrator work, including deployment decisions, troubleshooting, configuration choices, and lessons learned.
-
-Each phase moves the project closer to a complete, interview-ready Azure environment.
+Skills targeted:
+- Secret management
+- Secure service authentication
+- Identity permissions
+- Cloud security best practices
 
 ---
 
-## Current Status
+### Phase 3 — Monitoring & Operations ⏳ Planned
+Planned work:
 
-### Current Phase
+- Azure Monitor
+- Log collection
+- Alert rules
+- Operational dashboards
 
-**Phase 1 — Foundation**
+Skills targeted:
+- Observability
+- Incident detection
+- Alerting workflows
+- Infrastructure health monitoring
 
-### Completed
+---
 
-* GitHub repository created
-* README created
-* Project Journal created
-* Architecture document created
-* Resource Group deployed
-* Storage Account deployed
-* Log Analytics Workspace deployed
-* Virtual Network deployed
-* Network Security Group deployed
-* Network Security Group associated with subnet
-* Linux Virtual Machine deployed
+### Phase 4 — Automation & IaC ⏳ Planned
+Planned work:
 
-### Current Issues
+- PowerShell automation
+- Bicep deployments
+- Repeatable infrastructure provisioning
 
-* App Service deployment is paused due to a `Microsoft.Web/serverFarms` subscription/quota-related validation error
-* Azure automatically created a default subnet and assigned a public IP to the VM; both remain in place since they do not block project progress
+Skills targeted:
+- Infrastructure as Code
+- Automation
+- Operational efficiency
 
-### Next Step
+---
 
-Connect the Linux Virtual Machine to Log Analytics and begin exploring monitoring, metrics, and diagnostics.
+### Phase 5 — Advanced Networking & Security ⏳ Planned
+Planned work:
+
+- Advanced networking scenarios
+- Security hardening
+- Architecture refinement
+
+Skills targeted:
+- Secure cloud design
+- Network troubleshooting
+- Production-style architecture
