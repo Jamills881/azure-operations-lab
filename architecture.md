@@ -1,6 +1,16 @@
 # Architecture
 
-## Phase 1 — Foundation
+## Current Status
+
+* **Phase 1 — Foundation:** Completed
+* **Phase 2 — Security & Identity:** In Progress (mostly completed)
+* **Phase 3 — Monitoring & Operations:** Planned
+* **Phase 4 — Automation:** Planned
+* **Phase 5 — Advanced Networking & Security:** Planned
+
+---
+
+# Phase 1 — Foundation
 
 The initial Azure environment contains the foundational resources needed to support future networking, monitoring, security, and automation.
 
@@ -42,7 +52,7 @@ The initial Azure environment contains the foundational resources needed to supp
 
 **Status:** Completed
 
-**Purpose:** Control inbound and outbound network traffic using firewall-style security rules applied to subnet-main.
+**Purpose:** Control inbound and outbound network traffic using firewall-style security rules applied to `subnet-main`.
 
 ---
 
@@ -52,11 +62,9 @@ The initial Azure environment contains the foundational resources needed to supp
 
 **Purpose:** Originally intended to host a simple web application that could later be monitored, secured, and automated.
 
-**Current Issue:**
-Deployment is blocked by a `Microsoft.Web/serverFarms` subscription/quota-related validation error.
+**Current Issue:** Deployment is blocked by a `Microsoft.Web/serverFarms` subscription/quota-related validation error.
 
-**Decision:**
-App Service is paused and does not currently block project progress.
+**Decision:** App Service is paused and does not currently block project progress.
 
 ---
 
@@ -68,9 +76,11 @@ App Service is paused and does not currently block project progress.
 
 ---
 
-## Phase 2 — Security & Identity
+# Phase 2 — Security & Identity
 
 This phase focuses on securing application secrets, identity-based authentication, and access control between Azure resources.
+
+---
 
 ### Key Vault
 
@@ -92,14 +102,29 @@ This phase focuses on securing application secrets, identity-based authenticatio
 
 **Status:** Planned
 
-**Purpose:** Provide a managed relational database that can later integrate with Key Vault and Managed Identity for secure credential management.
-
+**Purpose:** Provide a managed relational database that can integrate with Key Vault and Managed Identity for secure authentication and credential management.
 
 ---
 
-## Phase 3 — Monitoring & Operations
+### Security Relationships
 
-Planned resources:
+Current identity and secret access flow:
+
+Virtual Machine
+↓
+System Assigned Managed Identity
+↓
+RBAC Role Assignment
+↓
+Azure Key Vault
+↓
+Secret Access
+
+---
+
+# Phase 3 — Monitoring & Operations
+
+Planned focus areas:
 
 * Azure Monitor
 * Diagnostic Settings
@@ -107,18 +132,18 @@ Planned resources:
 
 ---
 
-## Phase 4 — Automation
+# Phase 4 — Automation
 
-Planned resources:
+Planned focus areas:
 
 * PowerShell Automation
 * Bicep Deployments
 
 ---
 
-## Phase 5 — Advanced Networking & Security
+# Phase 5 — Advanced Networking & Security
 
-Planned improvements:
+Planned focus areas:
 
 * Additional subnets
 * Security hardening
