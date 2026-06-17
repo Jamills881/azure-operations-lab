@@ -70,17 +70,30 @@ App Service is paused and does not currently block project progress.
 
 ## Phase 2 — Security & Identity
 
-Planned resources:
+This phase focuses on securing application secrets, identity-based authentication, and access control between Azure resources.
 
-* Azure SQL Database
-* Key Vault
-* Managed Identity
-
-* ### Key Vault
+### Key Vault
 
 **Status:** Completed
 
-**Purpose:** Securely store secrets, passwords, certificates, and encryption keys while enforcing RBAC-based access control.
+**Purpose:** Securely store secrets, passwords, certificates, and other sensitive configuration data.
+
+---
+
+### Managed Identity
+
+**Status:** Completed
+
+**Purpose:** Provide Azure resources with an identity in Microsoft Entra ID so they can authenticate to Azure services without storing credentials locally.
+
+---
+
+### Azure SQL Database
+
+**Status:** Planned
+
+**Purpose:** Provide a managed relational database that can later integrate with Key Vault and Managed Identity for secure credential management.
+
 
 ---
 
