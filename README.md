@@ -42,8 +42,10 @@ The focus is practical Azure administration rather than software engineering.
 * Azure Key Vault
 * Managed Identity
 * RBAC
+* Azure SQL Database
 * Azure Monitor
 * Log Analytics
+* Cost Management / Budgeting
 * Alerts
 * PowerShell
 * Bicep
@@ -76,13 +78,15 @@ Each phase moves the project closer to a complete, interview-ready Azure environ
 
 ---
 
-# Current Status
+## Current Status
 
-## Current Phase
+### Current Phase Summary
 
-**Phase 2 — Security & Identity (In Progress)**
-
-Phase 1 has been completed and the project is now focused on security, identity, and access control between Azure resources.
+* Phase 1 — Foundation: Completed
+* Phase 2 — Security & Identity: Completed
+* Phase 3 — Monitoring & Operations: Planned
+* Phase 4 — Automation: Planned
+* Phase 5 — Advanced Networking & Security: Planned
 
 ---
 
@@ -109,13 +113,17 @@ Phase 1 has been completed and the project is now focused on security, identity,
 * Test secret created (`sql-admin-password`)
 * System Assigned Managed Identity enabled on VM
 * RBAC configured between VM and Key Vault
+* Azure SQL Database deployed (Basic tier)
+* Logical SQL Server configured
+* Public endpoint configured with restricted access
 
 ---
 
 ## Current Issues
 
-* App Service deployment is paused due to a `Microsoft.Web/serverFarms` subscription/quota-related validation error
+* App Service deployment is paused due to a Microsoft.Web/serverFarms subscription/quota-related validation error
 * Enhanced VM monitoring (Azure Monitor Agent / Data Collection Rules) was investigated but deferred due to additional complexity and cost considerations
+* Azure SQL deployment in East US was unavailable due to subscription or regional capacity limitations, so SQL was deployed in West US
 
 These issues do not currently block project progress.
 
@@ -123,17 +131,22 @@ These issues do not currently block project progress.
 
 ## Next Step
 
-Continue Phase 2 by deploying:
+Begin Phase 3 — Monitoring & Operations.
 
-* Azure SQL Database
+Planned focus areas:
 
-This will further connect database services, secure credential management, and identity-based access patterns.
+* Azure Monitor
+* Diagnostic Settings
+* Alert Rules
+* Operational visibility across VM and SQL resources
+
+This phase will focus on monitoring resource health, detecting issues early, and building operational alerting similar to real-world infrastructure environments.
 
 ---
 
 ## Repository Documentation
 
-This repository includes three primary documents:
+This repository includes three primary documents.
 
 ### README.md
 
