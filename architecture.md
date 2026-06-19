@@ -103,6 +103,7 @@ This phase focuses on securing application secrets, identity-based authenticatio
 Status: Completed
 
 Purpose: Provide a managed relational database service that integrates with identity, security, and application workloads while introducing Azure PaaS database administration concepts.
+
 ---
 
 ### Security Relationships
