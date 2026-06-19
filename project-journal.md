@@ -516,3 +516,92 @@ This was one of the strongest examples so far of how Azure security concepts map
 
 
 The biggest takeaway for me was realizing that many Azure security concepts are not completely new—they often map back to security workflows I have already seen in enterprise IT.
+
+## 2026-06-18 — Azure SQL Deployment
+
+### Focus
+
+Deploy Azure SQL Database to complete Phase 2 (Security & Identity) and add a managed database service to the environment.
+
+### What Was Built
+
+Azure SQL Database was deployed using the Basic pricing tier to provide a low-cost managed relational database for the lab environment.
+
+Resources deployed:
+
+* SQL Database: `sqldb-operationslab-dev`
+* Logical SQL Server: `sql-operationslab-jarrod`
+
+Configuration used:
+
+* Pricing Tier: Basic (5 DTUs)
+* Storage: 2 GB
+* Connectivity: Public endpoint
+* Allow Azure services: Disabled
+* Minimum TLS Version: 1.2
+
+### Key Observations
+
+Azure SQL deployment creates two separate components:
+
+* **Logical SQL Server** — manages authentication, firewall rules, connectivity, and administrative access
+* **SQL Database** — stores the actual tables, rows, and application data
+
+This reinforced an important PaaS concept:
+
+Azure manages the underlying infrastructure, operating system, patching, and availability, while administrative focus stays on database configuration, access, and security.
+
+Unlike traditional infrastructure, there is no VM or operating system to manage directly.
+
+### What Was Learned
+
+* Azure SQL is a Platform as a Service (PaaS) offering.
+* The SQL server in Azure is a logical management layer, not a traditional server.
+* Network access is controlled through firewall and endpoint configuration.
+* Public endpoints can be used for lab testing while still restricting access through firewall rules.
+* TLS is enforced to secure database connections.
+
+### Challenges & Resolution
+
+**Issue:** East US deployment was unavailable for the selected SQL server configuration.
+
+**Cause:** Subscription or regional capacity limitations.
+
+**Resolution:** SQL was deployed in West US using the lowest-cost Basic tier.
+
+**Outcome:** Deployment succeeded and Phase 2 progress continued despite regional constraints.
+
+### Real-World Connection
+
+This introduced cloud database administration concepts that differ from traditional server administration.
+
+Instead of managing operating systems, patching, or database server hardware, administration focuses more on:
+
+* access control
+* connectivity
+* security
+* cost management
+* service configuration
+
+This aligns with cloud operations work where infrastructure management shifts toward service management.
+
+### Why This Matters
+
+Azure SQL completes the core Phase 2 architecture by adding a managed database service to the environment.
+
+Current architecture:
+
+VM
+↓
+Managed Identity
+↓
+RBAC
+↓
+Key Vault
+↓
+Secret Storage
+
+* Azure SQL Database
+
+This expands the lab from core infrastructure into a more realistic cloud application environment involving compute, identity, secrets, and data services.
+
