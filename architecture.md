@@ -100,10 +100,9 @@ This phase focuses on securing application secrets, identity-based authenticatio
 
 ### Azure SQL Database
 
-**Status:** Planned
+***Status:*** Completed
 
-**Purpose:** Provide a managed relational database that can integrate with Key Vault and Managed Identity for secure authentication and credential management.
-
+***Purpose:*** Provide a managed relational database service that integrates with identity, security, and application workloads while introducing Azure PaaS database administration concepts.
 ---
 
 ### Security Relationships
