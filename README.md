@@ -84,7 +84,7 @@ Each phase moves the project closer to a complete, interview-ready Azure environ
 
 * Phase 1 — Foundation: Completed
 * Phase 2 — Security & Identity: Completed
-* Phase 3 — Monitoring & Operations: Planned
+* Phase 3 — Monitoring & Operations: In Progress
 * Phase 4 — Automation: Planned
 * Phase 5 — Advanced Networking & Security: Planned
 
