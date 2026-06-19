@@ -605,3 +605,72 @@ Secret Storage
 
 This expands the lab from core infrastructure into a more realistic cloud application environment involving compute, identity, secrets, and data services.
 
+## 2026-06-19 — Monitoring & Alerting
+
+### Focus
+
+Begin Phase 3 (Monitoring & Operations) by reviewing cost usage and creating the first Azure Monitor alert rule.
+
+### What Was Built
+
+Cost analysis was reviewed after deploying Azure SQL to confirm the environment remained within budget.
+
+Current cost status:
+
+* Actual cost: $1.12
+* Forecast: $2.37
+* Budget: $3.00
+
+No unexpected cost spike was observed after SQL deployment.
+
+The first Azure Monitor alert rule was created for `vm-operationslab-linux01`.
+
+Alert configuration:
+
+* Signal: Percentage CPU
+* Threshold: Average CPU > 80%
+* Evaluation Frequency: 1 minute
+* Lookback Period: 5 minutes
+
+An Action Group was also created to send email notifications when the alert is triggered.
+
+### Key Observations
+
+Azure alerting is built around three core components:
+
+* Metric
+* Condition
+* Evaluation Window
+
+These components determine what is monitored, when an alert triggers, and how often Azure evaluates the resource.
+
+Action Groups define what happens after an alert fires, such as email notifications or automation.
+
+### What Was Learned
+
+* Azure Monitor can evaluate resource metrics on a recurring schedule.
+* Alert rules use thresholds and evaluation windows to detect abnormal behavior.
+* Action Groups control alert notifications and response actions.
+* Effective alerting requires balancing sensitivity with alert noise.
+
+### Real-World Connection
+
+This closely mirrors monitoring workflows used at Expedient.
+
+High CPU usage alerts were common and typically required checking which process or service was consuming resources.
+
+Not every alert indicated a problem. In some cases, high CPU usage was expected based on workload, which required adjusting thresholds or evaluation windows to reduce unnecessary alert noise.
+
+The operational workflow feels very similar:
+
+Monitoring platform → Alert → Investigation → Escalation or Tuning
+
+The primary difference is the platform, with Azure Monitor replacing traditional infrastructure monitoring tools such as VMware vSphere.
+
+### Why This Matters
+
+Monitoring and alerting are core cloud operations responsibilities.
+
+This marks the start of Phase 3 and expands the project beyond infrastructure deployment into proactive operational monitoring and incident response.
+
+
