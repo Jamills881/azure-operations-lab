@@ -673,7 +673,7 @@ Monitoring and alerting are core cloud operations responsibilities.
 
 This marks the start of Phase 3 and expands the project beyond infrastructure deployment into proactive operational monitoring and incident response.
 
-## 2026-06-22 — Azure Monitor Disk Alert & Cost Review
+## 2026-06-21 — Azure Monitor Disk Alert & Cost Review
 
 ### Focus
 
