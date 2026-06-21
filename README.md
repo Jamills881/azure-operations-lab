@@ -131,16 +131,22 @@ These issues do not currently block project progress.
 
 ## Next Step
 
-Begin Phase 3 — Monitoring & Operations.
+### Phase 3 — Monitoring & Operations
 
-Planned focus areas:
+Completed:
 
-* Azure Monitor
+* Azure Monitor CPU alert created
+* Azure Monitor OS Disk IOPS alert created
+* Action Group configured for email notifications
+* Alert notifications successfully validated
+
+Planned:
+
+* Additional VM monitoring
+* SQL monitoring
 * Diagnostic Settings
-* Alert Rules
-* Operational visibility across VM and SQL resources
+* Log Analytics queries
 
-This phase will focus on monitoring resource health, detecting issues early, and building operational alerting similar to real-world infrastructure environments.
 
 ---
 
