@@ -673,4 +673,109 @@ Monitoring and alerting are core cloud operations responsibilities.
 
 This marks the start of Phase 3 and expands the project beyond infrastructure deployment into proactive operational monitoring and incident response.
 
+## 2026-06-22 — Azure Monitor Disk Alert & Cost Review
+
+### Focus
+
+Expanded VM monitoring and reviewed current Azure costs.
+
+### What Was Built
+
+Azure Monitor alerting was expanded by creating a second VM metric alert for disk performance.
+
+**New alert created:**
+
+* **OS Disk IOPS Alert** (`alert-vm-osdisk-high`)
+
+**Configuration:**
+
+* Signal: **OS Disk IOPS Consumed Percentage**
+* Threshold: **Greater than 90%**
+* Aggregation: **Average**
+* Evaluation Frequency: **Every 1 minute**
+* Lookback Period: **5 minutes**
+* Severity: **Sev 2 — Warning**
+
+The alert was connected to the existing Action Group:
+
+* **ag-vm-alerts**
+
+This allows email notifications when the alert condition is triggered.
+
+### Key Observations
+
+CPU and disk alerts monitor different types of infrastructure bottlenecks.
+
+* **CPU alerts** help identify compute pressure caused by heavy processing or runaway workloads.
+* **Disk IOPS alerts** help identify storage bottlenecks caused by high read/write activity.
+
+High disk IOPS does **not** indicate low disk space.
+
+Instead, it measures how heavily the disk is being used for read/write operations.
+
+Examples of workloads that may increase disk IOPS:
+
+* Database activity
+* Backup operations
+* Log processing
+* High read/write workloads
+
+### What Was Learned
+
+* Azure Monitor supports metric-based alerting for VM performance.
+* Multiple alerts can reuse the same Action Group for centralized notifications.
+* CPU and disk pressure represent different performance issues and should be monitored separately.
+* Alert thresholds should balance early warning with reducing unnecessary alert noise.
+
+Typical response workflow:
+
+1. Alert triggers
+2. Metrics are reviewed
+3. Root cause is investigated
+4. Decision is made to remediate, escalate, or adjust thresholds
+
+### Cost Review
+
+Azure cost analysis was reviewed before continuing project work.
+
+**Current cost:**
+
+* **Actual Cost:** $1.69
+* **Forecasted Monthly Cost:** $2.86
+* **Budget:** $3.00
+
+**Primary cost contributors:**
+
+* Virtual Network: **$0.92**
+* Storage: **$0.39**
+* SQL Database: **$0.38**
+
+**Observations:**
+
+* SQL costs increased compared to the previous review, indicating billing had continued catching up after deployment.
+* Virtual networking remains the largest cost contributor.
+* Metric alert pricing remains low at approximately **$0.10/month per alert**.
+
+Current costs remain within budget and do not require changes.
+
+### Real-World Connection
+
+This monitoring workflow closely resembles infrastructure alert handling at Expedient.
+
+High CPU and disk alerts typically involved:
+
+* Reviewing performance metrics
+* Identifying the process or workload causing resource pressure
+* Determining whether action or threshold adjustments were needed
+
+The same operational workflow applies in Azure using Azure Monitor and metric alerts.
+
+### Why This Matters
+
+The environment now includes proactive alerting for two core infrastructure performance areas:
+
+* CPU utilization
+* Disk I/O utilization
+
+This improves visibility into system health and better reflects real-world cloud operations practices.
 
