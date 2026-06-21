@@ -131,7 +131,7 @@ These issues do not currently block project progress.
 
 ## Next Step
 
-### ### Phase 3 — Monitoring & Operations
+### Phase 3 — Monitoring & Operations
 
 Completed:
 
