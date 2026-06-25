@@ -779,3 +779,23 @@ The environment now includes proactive alerting for two core infrastructure perf
 
 This improves visibility into system health and better reflects real-world cloud operations practices.
 
+## 2026-06-24 — Cost Review & Network Cleanup
+
+### Session Goal
+Review Azure costs and investigate unexpected networking charges.
+
+### Work Completed
+- Reviewed Azure Cost Analysis to identify major cost contributors.
+- Found networking costs were higher than expected compared to storage and SQL.
+- Investigated VM networking configuration and confirmed the Linux VM had a Standard Public IP attached.
+- Verified the NSG had no custom inbound allow rules, meaning the VM was not accessible from the public internet despite having a Public IP.
+- Determined the Public IP was unnecessary for current lab requirements.
+- Removed the Public IP from the VM to reduce cost and improve security.
+
+### Key Learnings
+- Standard Public IP resources can generate noticeable cost even when not actively used.
+- Cost optimization and security can overlap in cloud environments.
+- Removing unnecessary public endpoints reduces both spend and attack surface.
+
+### Next Steps
+- Check Azure Cost Analysis in the next session to confirm whether networking costs decrease after Public IP removal.
