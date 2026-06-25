@@ -45,7 +45,7 @@ The focus is practical Azure administration rather than software engineering.
 * Azure SQL Database
 * Azure Monitor
 * Log Analytics
-* Cost Management / Budgeting
+* Cost Management / Budgeting Optimization
 * Alerts
 * PowerShell
 * Bicep
@@ -146,7 +146,7 @@ Planned:
 * SQL monitoring
 * Diagnostic Settings
 * Log Analytics queries
-
+* Reviewed networking costs and removed unnecessary Standard Public IP from VM to reduce cost and improve security
 
 ---
 
