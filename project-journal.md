@@ -799,3 +799,35 @@ Review Azure costs and investigate unexpected networking charges.
 
 ### Next Steps
 - Check Azure Cost Analysis in the next session to confirm whether networking costs decrease after Public IP removal.
+
+## 2026-06-29 — Activity Logs and Log Analytics
+
+Today I continued Phase 3 (Monitoring & Operations) by working with Azure Activity Logs and Log Analytics.
+
+Goals:
+- Verify whether logs were being collected in Log Analytics
+- Understand how Azure routes logs to a Log Analytics Workspace
+- Validate log ingestion using queries
+
+Work completed:
+- Investigated Log Analytics Workspace after noticing queries returned no results
+- Confirmed Azure Activity Logs existed at the subscription level in Azure Monitor
+- Identified that the Log Analytics Workspace was not receiving data because Diagnostic Settings had not been configured
+- Created a subscription-level Diagnostic Setting named `diag-activitylogs-law`
+- Enabled all available Activity Log categories:
+  - Administrative
+  - Security
+  - ServiceHealth
+  - Alert
+  - Recommendation
+  - Policy
+  - Autoscale
+  - ResourceHealth
+- Configured logs to be sent to Log Analytics Workspace: `law-operationslab-dev`
+- Verified successful ingestion of Activity Log data in Log Analytics
+
+Key takeaway:
+Creating a Log Analytics Workspace alone does not automatically collect logs. Azure resources or subscriptions must explicitly forward logs using Diagnostic Settings, agents, or Data Collection Rules.
+
+Reflection:
+This felt like a real cloud operations task. The biggest lesson was understanding the difference between logs existing in Azure and logs being centralized for analysis.
