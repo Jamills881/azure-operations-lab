@@ -781,18 +781,42 @@ This improves visibility into system health and better reflects real-world cloud
 
 2026-06-29 — Activity Logs & Log Analytics Integration
 
-Focus
+**Focus**
 
-Continue Phase 3 (Monitoring & Operations) by validating log collection in Log Analytics and understanding how Azure routes activity logs for centralized monitoring.
+Continue Phase 3 (Monitoring & Operations) by reviewing Azure costs after recent infrastructure changes and validating centralized log collection in Log Analytics.
 
-What Was Built
+**What Was Built**
 
-Azure Activity Logs were integrated with the existing Log Analytics Workspace to enable centralized log collection and analysis.
+Azure cost analysis was reviewed after removing the VM Public IP to determine whether networking costs had changed.
 
-Configuration completed:
+Current cost status:
 
-* Diagnostic Setting created: `diag-activitylogs-law`
-* Destination: Log Analytics Workspace (`law-operationslab-dev`)
+* Actual Cost: $4.38
+* Forecasted Monthly Cost: $4.64
+* Budget: $3.00
+
+Primary cost contributors:
+
+* Virtual Network: $1.89
+* SQL Database: $1.68
+* Storage: $0.81
+
+Observations from cost review:
+
+* Public IP no longer appeared in the cost breakdown, confirming deletion succeeded.
+* VM compute cost showed as $0.00 because the VM was deallocated from auto-shutdown.
+* Azure SQL had become one of the largest recurring costs in the environment.
+
+After cost review, Log Analytics Workspace was investigated because queries were returning no results.
+
+Initial queries against `AzureActivity` returned no data.
+
+Further investigation showed Azure Activity Logs did exist at the subscription level, but they were not being forwarded into the Log Analytics Workspace.
+
+To resolve this, a Diagnostic Setting was created:
+
+* Diagnostic Setting: `diag-activitylogs-law`
+* Destination: `law-operationslab-dev`
 
 Enabled Activity Log categories:
 
@@ -805,30 +829,24 @@ Enabled Activity Log categories:
 * Autoscale
 * ResourceHealth
 
-After configuring Diagnostic Settings, the VM was started and stopped to generate fresh activity events for testing.
+After configuration, the VM was started and stopped to generate fresh activity events for testing.
 
-Log ingestion was validated by querying the `AzureActivity` table in Log Analytics.
+Log ingestion was later validated in Log Analytics using the `AzureActivity` table.
 
-Key Observations
+**Key Observations**
 
 Azure Activity Logs and Log Analytics are separate components.
 
-Azure was already generating activity logs for actions such as:
+Azure was already recording management events such as:
 
 * VM start and stop
 * Alert creation
-* Diagnostic setting changes
-* Resource updates
+* Resource changes
+* Diagnostic setting updates
 
-However, these logs were not visible in Log Analytics at first.
+However, those logs were not visible inside Log Analytics until Diagnostic Settings were configured.
 
-This revealed an important architecture detail:
-
-Creating a Log Analytics Workspace alone does not automatically collect logs.
-
-A separate configuration is required to route logs into the workspace.
-
-The logging flow works as follows:
+This reinforced the monitoring pipeline:
 
 Azure Resource / Subscription
 ↓
@@ -840,26 +858,28 @@ Log Analytics Workspace
 ↓
 Query / Analysis
 
-What Was Learned
+**What Was Learned**
 
-* Azure Activity Logs record management-plane events across the subscription.
-* Log Analytics acts as a centralized storage and query platform for collected telemetry.
-* Diagnostic Settings are required to forward subscription or resource logs into Log Analytics.
-* Log ingestion may not appear immediately and can take time after configuration changes.
+* Log Analytics Workspace does not automatically collect Azure logs.
+* Diagnostic Settings are required to route subscription or resource logs into Log Analytics.
+* VM compute charges stop when a VM is deallocated, but persistent resources continue billing.
+* Managed services such as Azure SQL can become major recurring cost drivers even in small environments.
 
-KQL queries were used to view the collected data, but this session was more focused on understanding log flow and monitoring architecture than learning KQL syntax in depth.
+KQL queries were used to validate log ingestion, but this session focused more on understanding log flow and monitoring architecture than learning KQL itself.
 
-Challenges & Resolution
+**Challenges & Resolution**
 
-Issue: Log Analytics queries returned no results even though multiple Azure changes had already been made.
+**Issue 1:** Budget deletion initially failed with a portal error.
 
-Initial concern:
-It appeared that logging was not working or data was missing.
+**Cause:** Azure portal caching / stale UI state.
 
-Cause:
-The Log Analytics Workspace existed, but no Diagnostic Settings had been configured to send Activity Logs into it.
+**Resolution:** Refreshing the page confirmed the budget had already been deleted successfully.
 
-Resolution:
+**Issue 2:** Log Analytics queries returned no results.
+
+**Cause:** Activity Logs existed, but no Diagnostic Settings were configured to forward them to Log Analytics.
+
+**Resolution:**
 
 * Verified Activity Logs existed in Azure Monitor
 * Created subscription-level Diagnostic Settings
@@ -867,27 +887,27 @@ Resolution:
 * Waited for ingestion to complete
 * Confirmed logs appeared in Log Analytics
 
-Outcome:
-Centralized activity logging is now functioning correctly.
+**Outcome:** Centralized activity logging is now functioning correctly.
 
-Real-World Connection
+**Real-World Connection**
 
-This felt similar to troubleshooting monitoring gaps in infrastructure environments.
+This session closely reflected real infrastructure troubleshooting.
 
-At Expedient, the issue was often not whether alerts existed, but whether the right monitoring data was reaching the right tools for investigation.
+At Expedient, monitoring issues were not always caused by missing alerts. In many cases, the issue was determining whether the right monitoring data was reaching the right tools for investigation.
 
-The same idea applies in Azure.
+The same operational concept applies in Azure.
 
-Monitoring is not only about generating alerts or logs — it also requires ensuring telemetry is successfully collected and accessible for analysis.
+Monitoring is not only about generating alerts or logs — it also requires ensuring telemetry is properly collected and accessible for analysis.
 
-Why This Matters
+**Why This Matters**
 
 This expands Phase 3 beyond metric-based alerting into centralized operational logging.
 
 The environment now includes:
 
-* Metric-based alerting for VM performance
+* CPU alerting
+* Disk IOPS alerting
 * Email notifications through Action Groups
 * Centralized Activity Log collection in Log Analytics
 
-This better reflects real-world cloud operations, where administrators need both proactive alerts and historical log data for investigation and troubleshooting.
+This better reflects real-world cloud operations where administrators need both proactive alerts and historical log data for investigation and troubleshooting.
