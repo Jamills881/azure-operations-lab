@@ -139,14 +139,15 @@ Completed:
 * Azure Monitor OS Disk IOPS alert created
 * Action Group configured for email notifications
 * Alert notifications successfully validated
+* Subscription Activity Logs exported to Log Analytics
+* Log ingestion validated in Log Analytics Workspace
 
 Planned:
 
 * Additional VM monitoring
 * SQL monitoring
-* Diagnostic Settings
-* Log Analytics queries
-* Reviewed networking costs and removed unnecessary Standard Public IP from VM to reduce cost and improve security
+* Additional diagnostic settings
+* More log analysis scenarios
 
 ---
 
