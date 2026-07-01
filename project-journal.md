@@ -911,3 +911,132 @@ The environment now includes:
 * Centralized Activity Log collection in Log Analytics
 
 This better reflects real-world cloud operations where administrators need both proactive alerts and historical log data for investigation and troubleshooting.
+
+2026-06-30 — Azure SQL Monitoring Exploration
+
+**Focus**
+
+Continue Phase 3 (Monitoring & Operations) by exploring Azure SQL monitoring capabilities and understanding how monitoring a managed database differs from monitoring a virtual machine.
+
+**What Was Built**
+
+Azure SQL metrics were explored for:
+
+* SQL Database: `sqldb-operationslab-dev`
+* Logical SQL Server: `sql-operationslab-jarrod`
+
+The Metrics blade was used to review available monitoring signals for the SQL database.
+
+Observed SQL metrics included:
+
+* CPU percentage
+* Data IO percentage
+* Data space allocated
+* Data space used
+* Data space used percent
+* Deadlocks
+* DTU Limit
+* Firewall-related metrics
+
+Three metrics were examined in detail.
+
+**CPU Percentage**
+
+CPU usage remained effectively idle.
+
+Observed peak:
+
+* ~0.0043%
+
+This indicated the SQL database currently has almost no active workload.
+
+**Data Space Used**
+
+Storage usage showed slow gradual growth over time.
+
+Observed usage:
+
+* ~22.3 MB used
+
+Growth appeared steady and small, indicating no storage pressure.
+
+**Deadlocks**
+
+Deadlock metric showed:
+
+* 0
+
+No transaction conflicts were detected.
+
+**Key Observations**
+
+Azure SQL monitoring differs significantly from VM monitoring.
+
+VM monitoring focuses primarily on infrastructure health such as:
+
+* CPU utilization
+* Disk I/O
+* Memory pressure
+* Network usage
+
+Azure SQL monitoring focuses more on service and workload behavior such as:
+
+* Query workload
+* Storage growth
+* Transaction contention
+* Database throughput
+
+This reflects the difference between IaaS and PaaS administration.
+
+With Azure SQL, the operating system and infrastructure are managed by Azure, shifting administrative focus toward service performance and capacity.
+
+**What Was Learned**
+
+* Azure SQL exposes workload-focused metrics instead of traditional operating system metrics.
+* DTU represents a bundled performance measurement combining compute, memory, and storage I/O capacity.
+* CPU metrics help identify workload pressure on the database.
+* Storage metrics help track database growth and capacity usage.
+* Deadlocks help identify transaction contention and concurrency issues.
+
+A deadlock occurs when multiple transactions wait on each other indefinitely, requiring SQL to terminate one transaction to resolve the conflict.
+
+**Real-World Connection**
+
+This session closely resembled monitoring work performed at Expedient.
+
+The workflow felt familiar:
+
+Resource
+↓
+Metric review
+↓
+Time-range adjustment
+↓
+Determine whether behavior is normal or abnormal
+↓
+Investigate further if needed
+
+A key observation was that the Azure platform differs from traditional infrastructure, but the operational mindset remains very similar.
+
+The same troubleshooting habits apply:
+
+* review metrics
+* identify spikes or trends
+* determine expected vs unexpected behavior
+* decide whether action is needed
+
+This reinforced that many cloud operations skills build on existing infrastructure monitoring experience.
+
+**Why This Matters**
+
+This session expanded Phase 3 beyond VM monitoring into managed service monitoring.
+
+The project now includes monitoring exposure across both:
+
+* Infrastructure resources (VM)
+* Platform services (Azure SQL)
+
+This improves understanding of how monitoring responsibilities change when moving from infrastructure administration to cloud service administration.
+
+The next step is implementing SQL alerting to move from passive metric review into proactive monitoring.
+
