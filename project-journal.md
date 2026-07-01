@@ -912,22 +912,22 @@ The environment now includes:
 
 This better reflects real-world cloud operations where administrators need both proactive alerts and historical log data for investigation and troubleshooting.
 
-2026-06-30 — Azure SQL Monitoring Exploration
+## 2026-06-30 — Azure SQL Monitoring Exploration
 
-**Focus**
+### Focus
 
-Continue Phase 3 (Monitoring & Operations) by exploring Azure SQL monitoring capabilities and understanding how monitoring a managed database differs from monitoring a virtual machine.
+Continue Phase 3 (Monitoring & Operations) by exploring Azure SQL monitoring and understanding how monitoring a managed database differs from monitoring a virtual machine.
 
-**What Was Built**
+### What Was Built
 
-Azure SQL metrics were explored for:
+Azure SQL metrics were explored for the following resources:
 
-* SQL Database: `sqldb-operationslab-dev`
-* Logical SQL Server: `sql-operationslab-jarrod`
+* **SQL Database:** `sqldb-operationslab-dev`
+* **Logical SQL Server:** `sql-operationslab-jarrod`
 
-The Metrics blade was used to review available monitoring signals for the SQL database.
+The **Metrics** blade was used to review available monitoring signals for the SQL database.
 
-Observed SQL metrics included:
+**Available SQL metrics included:**
 
 * CPU percentage
 * Data IO percentage
@@ -942,37 +942,33 @@ Three metrics were examined in detail.
 
 **CPU Percentage**
 
-CPU usage remained effectively idle.
-
 Observed peak:
 
-* ~0.0043%
+* **~0.0043%**
 
-This indicated the SQL database currently has almost no active workload.
+CPU usage remained effectively idle, indicating the database currently has almost no active workload.
 
 **Data Space Used**
 
-Storage usage showed slow gradual growth over time.
-
 Observed usage:
 
-* ~22.3 MB used
+* **~22.3 MB used**
 
-Growth appeared steady and small, indicating no storage pressure.
+Storage usage showed slow gradual growth over time, with no indication of storage pressure.
 
 **Deadlocks**
 
-Deadlock metric showed:
+Observed value:
 
-* 0
+* **0**
 
 No transaction conflicts were detected.
 
-**Key Observations**
+### Key Observations
 
 Azure SQL monitoring differs significantly from VM monitoring.
 
-VM monitoring focuses primarily on infrastructure health such as:
+VM monitoring primarily focuses on infrastructure health such as:
 
 * CPU utilization
 * Disk I/O
@@ -986,11 +982,11 @@ Azure SQL monitoring focuses more on service and workload behavior such as:
 * Transaction contention
 * Database throughput
 
-This reflects the difference between IaaS and PaaS administration.
+This reflects the difference between **IaaS** and **PaaS** administration.
 
-With Azure SQL, the operating system and infrastructure are managed by Azure, shifting administrative focus toward service performance and capacity.
+With Azure SQL, Azure manages the operating system, patching, and underlying infrastructure, shifting administrative focus toward service performance and capacity.
 
-**What Was Learned**
+### What Was Learned
 
 * Azure SQL exposes workload-focused metrics instead of traditional operating system metrics.
 * DTU represents a bundled performance measurement combining compute, memory, and storage I/O capacity.
@@ -1000,34 +996,30 @@ With Azure SQL, the operating system and infrastructure are managed by Azure, sh
 
 A deadlock occurs when multiple transactions wait on each other indefinitely, requiring SQL to terminate one transaction to resolve the conflict.
 
-**Real-World Connection**
+### Real-World Connection
 
-This session closely resembled monitoring work performed at Expedient.
+This monitoring workflow felt very similar to infrastructure monitoring work performed at Expedient.
 
-The workflow felt familiar:
+Typical workflow:
 
-Resource
-↓
-Metric review
-↓
-Time-range adjustment
-↓
-Determine whether behavior is normal or abnormal
-↓
-Investigate further if needed
+1. Resource is reviewed
+2. Metrics are analyzed
+3. Time range is adjusted if needed
+4. Behavior is evaluated as normal or abnormal
+5. Further investigation is performed if necessary
 
-A key observation was that the Azure platform differs from traditional infrastructure, but the operational mindset remains very similar.
+Although Azure uses different tooling, the operational mindset remains very similar.
 
 The same troubleshooting habits apply:
 
-* review metrics
-* identify spikes or trends
-* determine expected vs unexpected behavior
-* decide whether action is needed
+* Reviewing metrics
+* Identifying spikes or trends
+* Determining expected vs unexpected behavior
+* Deciding whether action is needed
 
-This reinforced that many cloud operations skills build on existing infrastructure monitoring experience.
+This reinforced that many cloud operations skills build on traditional infrastructure monitoring experience.
 
-**Why This Matters**
+### Why This Matters
 
 This session expanded Phase 3 beyond VM monitoring into managed service monitoring.
 
@@ -1039,4 +1031,3 @@ The project now includes monitoring exposure across both:
 This improves understanding of how monitoring responsibilities change when moving from infrastructure administration to cloud service administration.
 
 The next step is implementing SQL alerting to move from passive metric review into proactive monitoring.
-
