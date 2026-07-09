@@ -141,7 +141,9 @@ Completed:
 * Alert notifications successfully validated
 * Subscription Activity Logs exported to Log Analytics
 * Log ingestion validated in Log Analytics Workspace
-
+* Azure Activity Log integration configured
+* Basic KQL queries used to validate Azure administrative activity
+  
 Planned:
 
 * Additional VM monitoring
