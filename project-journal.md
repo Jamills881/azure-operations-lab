@@ -1031,3 +1031,87 @@ The project now includes monitoring exposure across both:
 This improves understanding of how monitoring responsibilities change when moving from infrastructure administration to cloud service administration.
 
 The next step is implementing SQL alerting to move from passive metric review into proactive monitoring.
+
+## 2026-07-07 — Azure SQL Storage Alert
+
+### Focus
+
+Expanded Azure Monitor by creating the first alert rule for Azure SQL Database storage utilization.
+
+### What Was Built
+
+A metric alert was created to monitor Azure SQL Database storage usage.
+
+**New alert created:**
+
+* **SQL Data Space Alert** (`alert-sql-dataspace-high`)
+
+**Configuration:**
+
+* Signal: **Data space used percent**
+* Threshold: **Greater than 80%**
+* Aggregation: **Maximum**
+* Evaluation Frequency: **Every 1 minute**
+* Lookback Period: **5 minutes**
+* Severity: **Sev 2 — Warning**
+
+The alert was connected to the existing Action Group:
+
+* **ag-vm-alerts**
+
+This allows email notifications to be reused across multiple Azure resources.
+
+### Key Observations
+
+Azure SQL Database alerting uses the same Azure Monitor workflow as VM alerting, but the signals are different.
+
+VM alerts focus on infrastructure metrics such as:
+
+* CPU utilization
+* Disk I/O
+* Network activity
+
+SQL Database alerts focus more on managed database metrics such as:
+
+* Storage utilization
+* DTU usage
+* CPU percentage
+* Deadlocks
+* Failed connections
+
+The database was currently using about **1%** of its allocated data space, so the alert is not expected to trigger during normal lab activity.
+
+### What Was Learned
+
+* Azure SQL Database supports metric-based alerting through Azure Monitor.
+* Existing Action Groups can be reused across different Azure resources.
+* **Data space used percent** is useful for tracking database capacity usage.
+* Alert thresholds should provide early warning before storage usage becomes a problem.
+* Monitoring a managed SQL database focuses more on service health and capacity than operating system performance.
+
+### Real-World Connection
+
+This monitoring workflow connects to infrastructure monitoring work performed at Expedient.
+
+At Expedient, high resource usage alerts required reviewing metrics, checking time ranges, and determining whether the behavior was expected or needed action.
+
+The same operational workflow applies in Azure:
+
+1. Alert triggers
+2. Metrics are reviewed
+3. Behavior is investigated
+4. Decision is made to remediate, escalate, or adjust thresholds
+
+The tools are different, but the monitoring process is familiar.
+
+### Why This Matters
+
+The environment now includes proactive alerting across both infrastructure and platform services.
+
+Current monitored resources include:
+
+* Virtual Machine CPU utilization
+* Virtual Machine Disk I/O utilization
+* Azure SQL Database storage utilization
+
+This expands Phase 3 by adding database capacity monitoring and better reflects real-world cloud operations practices.
