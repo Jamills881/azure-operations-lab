@@ -1116,84 +1116,96 @@ Current monitored resources include:
 
 This expands Phase 3 by adding database capacity monitoring and better reflects real-world cloud operations practices.
 
-2026-07-11 — Azure SQL Query Editor & Monitoring Validation
-Focus
+## 2026-07-11 — Azure SQL Query Editor & Monitoring Validation
+
+### Focus
 
 Validated Azure SQL Database functionality by creating a sample table, inserting data, and confirming Azure Monitor captured live database workload.
 
-What Was Built
+### What Was Built
 
 Connected to the Azure SQL Database using the Azure Portal Query Editor.
 
 An initial connection attempt was blocked because the SQL Server firewall did not allow the current public IP address. Azure automatically prompted to add the firewall rule, allowing the connection without manually configuring the SQL Server.
 
-Once connected:
+**Database objects created:**
 
-Database objects created:
+* **Employees** table
 
-Employees table
+**Table Structure**
 
-Table Structure
+* **EmployeeID** (Primary Key)
+* **FirstName**
+* **LastName**
+* **Department**
 
-EmployeeID (Primary Key)
-FirstName
-LastName
-Department
+**Sample records inserted:**
 
-Sample records inserted:
+| EmployeeID | First Name | Last Name | Department |
+|------------|------------|-----------|------------|
+| 1 | Jarrod | Mills | IT |
+| 2 | Jane | Smith | HR |
+| 3 | Mike | Johnson | Accounting |
 
-EmployeeID	First Name	Last Name	Department
-1	Jarrod	Mills	IT
-2	Jane	Smith	HR
-3	Mike	Johnson	Accounting
+The table was then queried successfully using a `SELECT` statement to verify the data had been written correctly.
 
-The table was then queried successfully using a SELECT statement to verify that the data had been written correctly.
-
-Key Observations
+### Key Observations
 
 Prior to generating database activity, Azure Monitor showed little or no DTU utilization.
 
 After creating the table, inserting records, and querying the data, Azure Monitor recorded a measurable workload.
 
-Observed metrics:
+**Observed metrics:**
 
-DTU Percentage briefly increased to approximately 1%
-Database storage increased slightly as records were added
-Azure Monitor successfully captured the workload shortly after the queries completed
+* **DTU Percentage:** peaked at approximately **1%**
+* Database storage increased slightly as records were added.
+* Azure Monitor successfully captured the workload shortly after the queries completed.
 
 Although the workload was very small, it demonstrated that Azure SQL metrics update in response to actual database activity.
 
-What Was Learned
-Azure SQL Query Editor allows basic database administration directly from the Azure Portal.
-SQL Server firewall rules must allow the client's public IP before browser-based connections are permitted.
-Azure can automatically create the required firewall rule directly from the Query Editor login screen.
-Creating tables, inserting data, and running queries immediately generate measurable Azure Monitor metrics.
-DTU Percentage measures database workload rather than database storage usage.
-Real-World Connection
+### What Was Learned
+
+* Azure SQL Query Editor allows basic database administration directly from the Azure Portal.
+* SQL Server firewall rules must allow the client's public IP before browser-based connections are permitted.
+* Azure can automatically create the required firewall rule directly from the Query Editor login screen.
+* Creating tables, inserting data, and running queries immediately generate measurable Azure Monitor metrics.
+* **DTU Percentage** measures database workload rather than database storage usage.
+
+Typical operational workflow:
+
+1. Connect to the database.
+2. Execute SQL queries.
+3. Azure Monitor collects workload metrics.
+4. Review performance trends.
+5. Investigate unexpected activity if resource utilization appears abnormal.
+
+### Real-World Connection
 
 This workflow closely mirrors infrastructure monitoring performed at Expedient.
 
 Rather than monitoring for constant high utilization, the focus was identifying workload changes and investigating what generated them.
 
-Typical operational workflow:
+The same operational workflow applies in Azure:
 
-Database activity occurs
-Azure Monitor records performance metrics
-Performance graphs are reviewed
-Resource utilization is correlated with recent activity
-Further investigation is performed if abnormal behavior is detected
+1. Database activity occurs.
+2. Azure Monitor records performance metrics.
+3. Metrics are reviewed.
+4. Resource utilization is correlated with recent activity.
+5. Decision is made to investigate, remediate, or continue monitoring.
 
-The monitoring process is nearly identical, even though Azure SQL is a managed platform service rather than a traditional virtual machine.
+Although Azure SQL is a managed platform service, the operational monitoring process is very similar to monitoring traditional infrastructure.
 
-Why This Matters
+### Why This Matters
 
 The Azure SQL environment has now been validated beyond simple deployment.
 
-Current SQL capabilities demonstrated include:
+Current SQL capabilities include:
 
-Browser-based SQL administration
-Database object creation
-Data insertion
-Data retrieval using SQL queries
-Live workload monitoring through Azure Monitor
-Integration between database activity and Azure performance metrics
+* Browser-based SQL administration
+* Database object creation
+* Data insertion
+* Data retrieval using SQL queries
+* Live workload monitoring through Azure Monitor
+* Validation that Azure Monitor captures real database activity
+
+This expands Phase 3 by demonstrating both operational database management and real-time performance monitoring, providing hands-on experience that closely resembles production cloud operations.
