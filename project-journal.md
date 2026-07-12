@@ -1209,3 +1209,132 @@ Current SQL capabilities include:
 * Validation that Azure Monitor captures real database activity
 
 This expands Phase 3 by demonstrating both operational database management and real-time performance monitoring, providing hands-on experience that closely resembles production cloud operations.
+
+## 2026-07-12 — Azure SQL Database Fundamentals
+
+### Focus
+
+Built foundational Azure SQL Database skills by creating and managing relational data, supporting common cloud administration tasks such as validating records, troubleshooting application data, and understanding how managed database services are operated.
+
+### What Was Built
+
+Connected to the Azure SQL Database through the Azure Portal Query Editor and created a simple `Employees` table.
+
+**Table created:**
+
+* **Employees**
+
+**Columns:**
+
+* EmployeeID (Primary Key)
+* FirstName
+* LastName
+* Department
+
+Sample employee records were added to simulate a small production database.
+
+### Tasks Completed
+
+Practiced the four core database operations (CRUD) used when working with relational databases.
+
+**Create**
+
+* Created the `Employees` table.
+
+**Insert**
+
+* Added three employee records.
+
+**Read**
+
+* Retrieved employee information using `SELECT` statements.
+
+**Update**
+
+* Updated EmployeeID 1 from **IT** to **Cloud Operations**.
+
+**Delete**
+
+* Removed EmployeeID 2 from the database.
+
+Each change was verified by querying the database after the operation completed.
+
+### Query Practice
+
+Practiced retrieving information using common SQL queries that administrators frequently use during troubleshooting.
+
+**Queries performed:**
+
+* Display all employees.
+* Retrieve a single employee using `WHERE`.
+* Filter employees by department.
+* Return only selected columns.
+* Sort records alphabetically using `ORDER BY`.
+* Count total employees using `COUNT(*)`.
+* Count employees within a specific department.
+
+These exercises demonstrate how administrators locate and verify information without modifying the underlying data.
+
+### Key Observations
+
+Although Azure SQL Database is a managed Platform-as-a-Service (PaaS) offering, database administration still relies on many of the same operational concepts found in traditional SQL environments.
+
+Most day-to-day operational work involves retrieving and validating information rather than designing databases.
+
+Filtering, sorting, counting records, and verifying changes are common administrative tasks during troubleshooting and application support.
+
+### Challenges & Resolution
+
+* Azure SQL Query Editor initially blocked access because the client IP address was not allowed by the SQL Server firewall.
+* Added the current public IP address through the Azure Portal and successfully established a connection.
+* Accidentally attempted to create the `Employees` table twice, resulting in an "object already exists" error.
+* Verified the table had already been created and continued with the remaining CRUD operations.
+* SQL performance metrics did not initially appear after creating the database. After executing queries against the database, Azure Monitor began collecting activity and the DTU metric became visible.
+
+### What Was Learned
+
+* Azure SQL Database can be managed directly through the Azure Portal Query Editor.
+* SQL databases organize information into tables containing rows and columns.
+* CRUD (Create, Read, Update, Delete) operations form the foundation of relational database management.
+* `SELECT`, `WHERE`, `ORDER BY`, and `COUNT` are among the most commonly used SQL statements for operational work.
+* Database changes should always be verified after execution.
+* Azure Monitor only displays meaningful SQL performance metrics after the database begins processing workload.
+
+### Real-World Connection
+
+This lab reflects many of the database interactions performed by infrastructure and cloud administrators.
+
+In production environments, administrators frequently query databases to verify user records, confirm configuration changes, troubleshoot application issues, and validate automation tasks.
+
+While developers design applications that use databases, operations teams often focus on reading, validating, and maintaining the underlying data.
+
+The workflow closely mirrors operational troubleshooting:
+
+1. Connect to the database.
+2. Retrieve the necessary information.
+3. Verify the current state.
+4. Make changes if required.
+5. Confirm the changes were applied successfully.
+
+This approach is similar to support work performed at Expedient, where investigating alerts or application issues often involved validating data, confirming system state, and determining whether corrective action was necessary.
+
+### Learning Rule
+
+Reading documentation introduces concepts, but executing SQL queries and verifying the results builds operational confidence. Hands-on repetition is what turns knowledge into practical troubleshooting skills.
+
+### Why This Matters
+
+This lab introduces practical SQL skills that support cloud infrastructure administration without focusing on software development.
+
+Current Azure SQL experience now includes:
+
+* Connecting through the Azure Portal Query Editor.
+* Managing SQL Server firewall access.
+* Creating relational database tables.
+* Performing CRUD operations.
+* Retrieving data using common SQL queries.
+* Filtering, sorting, and counting records.
+* Verifying changes after database operations.
+* Observing Azure Monitor collect performance metrics after database activity.
+
+
