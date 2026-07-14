@@ -1337,4 +1337,111 @@ Current Azure SQL experience now includes:
 * Verifying changes after database operations.
 * Observing Azure Monitor collect performance metrics after database activity.
 
+## 2026-07-13 — Azure SQL Monitoring Validation and Basic Database Operations
 
+### Focus
+
+Built foundational SQL skills while validating Azure SQL Database monitoring through Azure Monitor. The session focused on performing basic database operations, verifying that Azure Monitor collected workload metrics, and confirming that monitoring was functioning as expected.
+
+### What Was Built
+
+Performed basic SQL CRUD (Create, Read, Update, Delete) operations using the Azure SQL Database Query Editor.
+
+**SQL operations completed:**
+
+* Created an `Employees` table.
+* Inserted sample employee records.
+* Queried the table using `SELECT`.
+* Updated an employee's department.
+* Deleted a sample employee record.
+* Verified all changes using additional `SELECT` queries.
+
+Reviewed the previously created Azure SQL storage alert and confirmed:
+
+* **SQL Data Space Alert** (`alert-sql-dataspace-high`)
+* Action Group: **ag-vm-alerts**
+* Alert configuration remained healthy and enabled.
+
+Validated Azure Monitor metrics by reviewing:
+
+* DTU Percentage
+* CPU Percentage
+
+### Monitoring Validation
+
+Database activity generated during the SQL exercises appeared in Azure Monitor after selecting the appropriate time range.
+
+Key observations included:
+
+* Azure Monitor successfully collected SQL workload metrics.
+* The default **24-hour** view did not initially display the activity.
+* Changing the time range to **7 Days** displayed the database workload.
+* Both **DTU Percentage** and **CPU Percentage** showed a brief spike of approximately **1%** while SQL queries were executing before returning to near 0%.
+
+This confirmed that Azure Monitor was successfully collecting performance data for the Azure SQL Database.
+
+### Key Observations
+
+Azure SQL Database exposes operational metrics similar to those used for monitoring virtual machines, but the focus is different.
+
+Examples include:
+
+* DTU Percentage
+* CPU Percentage
+* Storage Utilization
+* Data Space Used Percentage
+
+Unlike traditional SQL Server administration, Azure SQL monitoring emphasizes managed service health and resource consumption rather than operating system performance.
+
+The session also reinforced that Azure Monitor visualizations depend on the selected time range, making it important to verify historical windows when expected activity is not immediately visible.
+
+### Challenges & Resolution
+
+**Challenge:**
+
+Initially, no database activity appeared in Azure Monitor after executing SQL queries.
+
+**Resolution:**
+
+The issue was not with data collection. Expanding the chart from the default **24-hour** view to **7 Days** revealed the recorded workload, confirming that Azure Monitor had successfully captured the database activity.
+
+### What Was Learned
+
+* Azure SQL Database supports browser-based administration through the Query Editor.
+* Basic SQL operations can be performed directly within the Azure portal.
+* Azure Monitor automatically captures database workload metrics.
+* DTU Percentage and CPU Percentage provide insight into database resource utilization.
+* Time range selection is an important part of validating monitoring data.
+
+### Real-World Connection
+
+This session closely relates to operational work performed at Expedient.
+
+Although Expedient primarily supported traditional server infrastructure, troubleshooting often began by reviewing monitoring data before taking corrective action.
+
+The same operational workflow applies in Azure:
+
+1. Generate or observe workload.
+2. Review monitoring data.
+3. Verify expected system behavior.
+4. Determine whether action is required.
+
+While Azure SQL is a managed platform service, the overall monitoring process follows the same operational mindset.
+
+### Why This Matters
+
+The Operations Lab now includes both infrastructure monitoring and managed database monitoring.
+
+Current monitoring coverage includes:
+
+* Virtual Machine CPU utilization
+* Virtual Machine Disk I/O utilization
+* Azure SQL Database storage utilization
+* Azure SQL Database DTU utilization
+* Azure SQL Database CPU utilization
+
+This expands the monitoring capabilities of the lab and provides hands-on experience with validating cloud resource performance using Azure Monitor.
+
+### Learning Rule
+
+Monitoring data is only valuable if it is interpreted correctly. Before assuming data is missing or a service is not working, verify configuration details such as the selected time range, metric, and aggregation settings.
