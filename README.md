@@ -1,5 +1,11 @@
 # Azure Operations Lab
 
+## Project Status
+
+**Current Phase:** Operations & Administration
+
+The foundational Azure infrastructure has been deployed. Current work focuses on operating and maintaining the environment through monitoring, recovery, security, troubleshooting, and documentation. New resources are added only when they support a realistic operational scenario.
+
 ## Purpose
 
 This project is a hands-on Azure environment designed to demonstrate real-world cloud administration skills. It focuses on infrastructure, networking, identity, monitoring, security, and automation — the core responsibilities of Azure Administrator, Systems Administrator, Infrastructure Engineer, and Cloud Operations roles.
