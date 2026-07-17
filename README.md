@@ -1,5 +1,7 @@
 # Azure Operations Lab
 
+A hands-on Azure project focused on building practical cloud administration skills through real-world operational scenarios, including monitoring, security, recovery, troubleshooting, and infrastructure management.
+
 ## Project Status
 
 **Current Phase:** Operations & Administration
@@ -77,8 +79,8 @@ The focus is practical Azure administration rather than software engineering.
 
 * Phase 1 — Foundation: Completed
 * Phase 2 — Security & Identity: Completed
-* Phase 3 — Monitoring & Operations: In Progress
-* Phase 4 — Automation: Planned
+* Phase 3 — Monitoring & Operations: Completed
+* Phase 4 — Operations & Recovery: In Progress
 * Phase 5 — Advanced Networking & Security: Planned
 
 ---
