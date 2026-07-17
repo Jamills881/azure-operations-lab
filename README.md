@@ -8,8 +8,6 @@ The foundational Azure infrastructure has been deployed. Current work focuses on
 
 ## Purpose
 
-## Purpose
-
 This project is a hands-on Azure Operations Lab designed to simulate the day-to-day responsibilities of a Junior Cloud Administrator, Systems Administrator, or Infrastructure Engineer.
 
 Rather than focusing solely on deploying Azure resources, the project emphasizes operating, maintaining, monitoring, securing, recovering, and troubleshooting an existing Azure environment.
@@ -44,58 +42,32 @@ The focus is practical Azure administration rather than software engineering.
 
 ## Skills Demonstrated
 
-Azure Administration
+### Azure Administration
 
-• Resource Groups
-• Azure Storage
-• Virtual Networks
-• Network Security Groups
-• Virtual Machines
-• Azure SQL Database
+- Resource Groups
+- Azure Storage
+- Virtual Networks
+- Network Security Groups
+- Virtual Machines
+- Azure SQL Database
 
-Identity & Security
+### Identity & Security
 
-• Azure Key Vault
-• Managed Identity
-• RBAC
+- Azure Key Vault
+- Managed Identity
+- Azure RBAC
 
-Monitoring & Operations
+### Monitoring & Operations
 
-• Azure Monitor
-• Log Analytics
-• Alerts
-• Cost Management
+- Azure Monitor
+- Log Analytics
+- Alerts
+- Cost Management
 
-Automation
+### Automation
 
-• PowerShell
-• Bicep
-
----
-
-## Project Approach
-
-This project follows a practical, step-by-step approach designed to build real Azure administration experience without unnecessary complexity.
-
-Project principles:
-
-* Stay practical
-* No overengineering
-* Build one meaningful resource or feature at a time
-* Understand why before deploying anything
-* Explore each resource after deployment
-* Document what was learned
-* Prioritize interview value over certification coverage
-
-Documentation reflects real-world administrator work, including:
-
-* Deployment decisions
-* Troubleshooting
-* Configuration choices
-* Security considerations
-* Operational lessons learned
-
-Each phase moves the project closer to a complete, interview-ready Azure environment.
+- PowerShell
+- Bicep
 
 ---
 
@@ -111,32 +83,33 @@ Each phase moves the project closer to a complete, interview-ready Azure environ
 
 ---
 
-## Completed
+### Completed
 
-### Phase 1 — Foundation
+- Phase 1 — Foundation
+- Phase 2 — Security & Identity
+- Phase 3 — Monitoring & Operations
 
-* GitHub repository created
-* README created
-* Project Journal created
-* Architecture document created
-* Resource Group deployed
-* Storage Account deployed
-* Log Analytics Workspace deployed
-* Virtual Network deployed
-* Network Security Group deployed and associated with subnet
-* Linux Virtual Machine deployed
-* Budget alerts configured
-* VM auto-shutdown configured
+### Current Focus
 
-### Phase 2 — Security & Identity
+The project has transitioned into an operations-focused environment.
 
-* Azure Key Vault deployed
-* Test secret created (`sql-admin-password`)
-* System Assigned Managed Identity enabled on VM
-* RBAC configured between VM and Key Vault
-* Azure SQL Database deployed (Basic tier)
-* Logical SQL Server configured
-* Public endpoint configured with restricted access
+Current work emphasizes:
+
+- Recovery
+- Troubleshooting
+- Security validation
+- Operational maintenance
+- Cost management
+- Documentation
+
+### Planned
+
+- Key Vault Secret Rotation
+- VM Connectivity Troubleshooting
+- Network Security Group Validation
+- RBAC Validation
+- Additional SQL recovery scenarios
+- Resource cleanup
 
 ---
 
@@ -150,7 +123,20 @@ These issues do not currently block project progress.
 
 ---
 
-## Next Step
+## Roadmap
+
+Current
+
+• Key Vault Secret Rotation
+• Azure Cost Review
+
+Upcoming
+
+• VM Connectivity Troubleshooting
+• NSG Validation
+• RBAC Validation
+• SQL Recovery Scenarios
+• Resource Cleanup
 
 ### Phase 3 — Monitoring & Operations
 
