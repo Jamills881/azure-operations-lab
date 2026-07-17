@@ -8,19 +8,23 @@ The foundational Azure infrastructure has been deployed. Current work focuses on
 
 ## Purpose
 
-This project is a hands-on Azure environment designed to demonstrate real-world cloud administration skills. It focuses on infrastructure, networking, identity, monitoring, security, and automation — the core responsibilities of Azure Administrator, Systems Administrator, Infrastructure Engineer, and Cloud Operations roles.
+## Purpose
 
-The project was created to gain practical Azure experience outside of day-to-day IT support responsibilities and to build a portfolio that demonstrates real cloud administration skills.
+This project is a hands-on Azure Operations Lab designed to simulate the day-to-day responsibilities of a Junior Cloud Administrator, Systems Administrator, or Infrastructure Engineer.
 
+Rather than focusing solely on deploying Azure resources, the project emphasizes operating, maintaining, monitoring, securing, recovering, and troubleshooting an existing Azure environment.
+
+The goal is to gain practical Azure administration experience outside of day-to-day IT support responsibilities while building a portfolio that demonstrates production-style operational skills.
 ---
 
 ## Project Goals
 
-* Build a complete Azure environment
+* Build and operate a complete Azure environment
 * Practice Azure administration using real services
 * Demonstrate networking, identity, security, monitoring, and automation
 * Document architecture, deployment decisions, troubleshooting, and lessons learned
 * Create a project that supports resume and interview discussions
+* Develop practical operational decision-making and troubleshooting experience
 
 ---
 
@@ -40,21 +44,32 @@ The focus is practical Azure administration rather than software engineering.
 
 ## Skills Demonstrated
 
-* Resource Groups
-* Azure Storage
-* Virtual Networks
-* Network Security Groups
-* Virtual Machines
-* Azure Key Vault
-* Managed Identity
-* RBAC
-* Azure SQL Database
-* Azure Monitor
-* Log Analytics
-* Cost Management / Budgeting Optimization
-* Alerts
-* PowerShell
-* Bicep
+Azure Administration
+
+• Resource Groups
+• Azure Storage
+• Virtual Networks
+• Network Security Groups
+• Virtual Machines
+• Azure SQL Database
+
+Identity & Security
+
+• Azure Key Vault
+• Managed Identity
+• RBAC
+
+Monitoring & Operations
+
+• Azure Monitor
+• Log Analytics
+• Alerts
+• Cost Management
+
+Automation
+
+• PowerShell
+• Bicep
 
 ---
 
