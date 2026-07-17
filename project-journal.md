@@ -1581,3 +1581,37 @@ These activities closely reflect the routine operational checks performed by clo
 Building a cloud resource is only the beginning.
 
 Effective administration also requires validating configuration, monitoring performance, understanding recovery options, and knowing where to find operational information when troubleshooting.
+
+Session: SQL Point-in-Time Recovery
+
+Objective
+
+Perform a point-in-time restore of the existing Azure SQL Database using automatic backups and validate the restored data.
+
+What I did
+Restored the existing Azure SQL Database to a new database using Azure SQL point-in-time recovery.
+Connected to the restored database using SQL Query Editor.
+Queried the restored database to verify its contents.
+Compared the restored database with the current production database.
+Result
+
+The restored database reflected the state of the source database at the selected restore point.
+
+When restoring to the July 10 restore point, the restored database did not contain the Employees table because it had been created after that backup. Comparing the restored database with the current database confirmed that point-in-time recovery restores data exactly as it existed at the selected time.
+
+What I learned
+Azure SQL point-in-time recovery always creates a new database.
+The restore process does not overwrite the existing production database.
+Data created after the selected restore point is not included in the restored database.
+Validating restored data is an important part of confirming a successful recovery operation.
+Operational Reflection
+
+This exercise demonstrated a common recovery scenario where an administrator restores a database to recover data from an earlier point in time without affecting the production database. It reinforced the importance of selecting the correct restore point and validating recovered data before using the restored database.
+
+Project Update
+
+During planning for the next phase, the project approach was refined.
+
+Rather than validating configurations that have already been proven (such as manually triggering existing alerts), future sessions will prioritize operational tasks that provide stronger real-world administration experience and interview value.
+
+The focus of the Operations Lab has now shifted from primarily deploying Azure resources to operating, maintaining, securing, recovering, troubleshooting, and documenting an existing Azure environment.
