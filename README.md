@@ -83,12 +83,6 @@ The focus is practical Azure administration rather than software engineering.
 
 ---
 
-### Completed
-
-- Phase 1 — Foundation
-- Phase 2 — Security & Identity
-- Phase 3 — Monitoring & Operations
-
 ### Current Focus
 
 The project has transitioned into an operations-focused environment.
@@ -125,38 +119,18 @@ These issues do not currently block project progress.
 
 ## Roadmap
 
-Current
+### Current
 
-• Key Vault Secret Rotation
-• Azure Cost Review
+- Key Vault Secret Rotation
+- Azure Cost Review
 
-Upcoming
+### Upcoming
 
-• VM Connectivity Troubleshooting
-• NSG Validation
-• RBAC Validation
-• SQL Recovery Scenarios
-• Resource Cleanup
-
-### Phase 3 — Monitoring & Operations
-
-Completed:
-
-* Azure Monitor CPU alert created
-* Azure Monitor OS Disk IOPS alert created
-* Action Group configured for email notifications
-* Alert notifications successfully validated
-* Subscription Activity Logs exported to Log Analytics
-* Log ingestion validated in Log Analytics Workspace
-* Azure Activity Log integration configured
-* Basic KQL queries used to validate Azure administrative activity
-  
-Planned:
-
-* Additional VM monitoring
-* SQL monitoring
-* Additional diagnostic settings
-* More log analysis scenarios
+- VM Connectivity Troubleshooting
+- Network Security Group Validation
+- RBAC Validation
+- Additional SQL recovery scenarios
+- Resource Cleanup
 
 ---
 
