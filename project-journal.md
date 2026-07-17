@@ -1582,3 +1582,70 @@ Building a cloud resource is only the beginning.
 
 Effective administration also requires validating configuration, monitoring performance, understanding recovery options, and knowing where to find operational information when troubleshooting.
 
+#### SQL Point-in-Time Recovery
+
+Performed a Point-in-Time Restore (PITR) of the existing Azure SQL Database using Azure's automatic backup capability.
+
+Azure created a new database from the selected restore point while leaving the production database unchanged.
+
+The restored database was accessed through Query Editor to validate the recovery.
+
+**Validation Performed:**
+
+- Restored the production database to a new Azure SQL Database.
+- Connected to the restored database using SQL Query Editor.
+- Verified the active database using `DB_NAME()`.
+- Queried the restored database for user tables using `INFORMATION_SCHEMA.TABLES`.
+- Compared the restored database with the current production database.
+
+The restored database did not contain the **Employees** table because it was restored from a point in time before the table had been created. Comparing both databases confirmed that Azure SQL restored the database exactly as it existed at the selected restore point.
+
+### Key Observations
+
+- Azure SQL Point-in-Time Recovery creates a new database rather than overwriting the existing database.
+- The production database remains available throughout the recovery process.
+- The restored database accurately reflects the selected restore point.
+- Objects created after the selected restore point are not included in the restored database.
+
+### What Was Learned
+
+- Azure SQL automatically maintains backups that support Point-in-Time Recovery.
+- Selecting the correct restore point is critical when recovering data.
+- Recovery validation should include verifying the active database and confirming expected database objects.
+- Comparing the restored database with the production database is an effective way to validate a successful recovery.
+
+### Real-World Connection
+
+Point-in-Time Recovery is commonly used to recover from accidental data loss, application issues, or user error without affecting the production database.
+
+Administrators are responsible for validating that recovered data matches the intended recovery point before the restored database is used.
+
+### Challenges & Resolution
+
+**Challenge**
+
+The restored database appeared to be missing the expected **Employees** table.
+
+**Resolution**
+
+Reviewing the selected restore point and comparing the restored database with the production database confirmed that the restore was performed from a point in time before the table had been created. The recovery completed successfully and accurately reflected the database state at that time.
+
+### Why This Matters
+
+This session demonstrated that recovery operations involve more than restoring a backup. Administrators must understand recovery points, validate recovered data, and confirm that the restored environment matches expectations before considering the recovery successful.
+
+### Learning Rule
+
+Completing a recovery operation is only the first step.
+
+Always validate the restored environment against the expected recovery point before considering the recovery successful.
+
+---
+
+## Project Direction Update
+
+The Operations Lab has transitioned from primarily deploying Azure resources to operating, maintaining, securing, recovering, troubleshooting, and documenting an existing Azure environment.
+
+Future sessions will prioritize operational tasks that provide meaningful real-world administration experience and interview value.
+
+Configuration reviews and validation exercises will continue when appropriate, but the focus will remain on practical operational scenarios rather than repeating work that has already been successfully validated.
