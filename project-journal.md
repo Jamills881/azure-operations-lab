@@ -1649,3 +1649,16 @@ The Operations Lab has transitioned from primarily deploying Azure resources to 
 Future sessions will prioritize operational tasks that provide meaningful real-world administration experience and interview value.
 
 Configuration reviews and validation exercises will continue when appropriate, but the focus will remain on practical operational scenarios rather than repeating work that has already been successfully validated.
+
+## July 26, 2026
+
+### Objective
+Review the existing Azure environment before making additional changes.
+
+### Completed
+- Reviewed the Resource Group, Virtual Network, Network Security Group, Virtual Machine, SQL Server, SQL Database, Key Vault, Storage Account, Log Analytics Workspace, and Alert Rules.
+- Confirmed the environment is operating as expected.
+- Started building the resource inventory documentation.
+
+### Notes
+The project is shifting from deploying resources to understanding, operating, and documenting the existing environment before expanding it.
