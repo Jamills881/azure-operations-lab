@@ -1,29 +1,31 @@
-# Azure Resource Inventory
+# Virtual Machine
 
-This document describes the resources that make up the Azure Operations Project.
-
----
-
-# Resource Group
-
-## rg-operationslab-dev
-
-**Type**
-Resource Group
+## vm-operationslab-linux01
 
 **Purpose**
-Contains the resources that make up the Azure Operations Project and provides a single location for managing the environment.
 
-**Status**
-Active
+Provides the primary compute resource for the environment and will host the project workload.
+
+**Configuration**
+
+- Ubuntu Linux
+- East US
+- Connected to subnet-main
 
 **Connected Resources**
-- Virtual Network
-- Virtual Machine
-- SQL Server
+
+- Network Interface
+- Public IP
+- NSG
+- Managed Identity
 - Key Vault
-- Storage Account
-- Log Analytics Workspace
+
+**Monitoring**
+
+- CPU Alert
+- Disk Alert
+- Log Analytics
 
 **Notes**
-Primary resource group for the project.
+
+Currently running and used for Azure administration exercises.
