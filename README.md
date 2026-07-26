@@ -87,11 +87,9 @@ The focus is practical Azure administration rather than software engineering.
 
 ---
 
-### Current Focus
+## Current Focus
 
-The project has transitioned into an operations-focused environment.
-
-Current work emphasizes:
+The foundation of the environment is in place. Current work focuses on operating and validating the existing environment through activities such as:
 
 - Recovery
 - Troubleshooting
@@ -99,6 +97,8 @@ Current work emphasizes:
 - Operational maintenance
 - Cost management
 - Documentation
+
+New resources are introduced only when they support one of these operational scenarios.
 
 ### Planned
 
