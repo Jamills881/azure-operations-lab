@@ -14,7 +14,7 @@ Current work focuses on understanding, validating, operating, and documenting th
 
 This project is a hands-on Azure Operations Lab designed to simulate the day-to-day responsibilities of a Junior Cloud Administrator, Systems Administrator, or Infrastructure Engineer.
 
-Rather than focusing solely on deploying Azure resources, the project emphasizes operating, maintaining, monitoring, securing, recovering, and troubleshooting an existing Azure environment.
+Rather than focusing solely on deploying Azure resources, the project emphasizes understanding, validating, operating, maintaining, monitoring, securing, recovering, troubleshooting, and documenting an existing Azure environment.
 
 The goal is to gain practical Azure administration experience outside of day-to-day IT support responsibilities while building a portfolio that demonstrates production-style operational skills.
 ---
