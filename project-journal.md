@@ -1661,4 +1661,5 @@ Review the existing Azure environment before making additional changes.
 - Started building the resource inventory documentation.
 
 ### Notes
-The project is shifting from deploying resources to understanding, operating, and documenting the existing environment before expanding it.
+
+Today's session focused on reviewing the environment instead of building something new. The goal going forward is to understand how the current environment works, validate that it's configured correctly, and document it before adding more resources. New resources will only be added when they support a real operational need.
