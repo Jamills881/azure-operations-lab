@@ -18,6 +18,7 @@ Rather than focusing solely on deploying Azure resources, the project emphasizes
 
 The goal is to gain practical Azure administration experience outside of day-to-day IT support responsibilities while building a portfolio that demonstrates production-style operational skills.
 
+
 ---
 
 ## Project Goals
