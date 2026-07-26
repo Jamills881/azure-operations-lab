@@ -6,7 +6,9 @@ A hands-on Azure project focused on building practical cloud administration skil
 
 **Current Phase:** Operations & Administration
 
-The foundational Azure infrastructure has been deployed. Current work focuses on operating and maintaining the environment through monitoring, recovery, security, troubleshooting, and documentation. New resources are added only when they support a realistic operational scenario.
+The foundational Azure infrastructure has been deployed.
+
+Current work focuses on understanding, validating, operating, and documenting the existing environment before expanding it. New resources are added only when they support a realistic operational scenario or business need.
 
 ## Purpose
 
