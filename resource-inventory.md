@@ -1,1 +1,1 @@
-| rg-operationslab-dev | Resource Group | Contains all of the resources for the Azure Operations Project. This is where I manage and organize the environment. | Active | Primary resource group for the project. |
+| rg-operationslab-dev | Resource Group | Contains the resources that make up the Azure Operations Project and provides a single location for managing the environment. | Active | Primary resource group for the project. |
