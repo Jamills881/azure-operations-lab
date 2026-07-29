@@ -1663,3 +1663,45 @@ Review the existing Azure environment before making additional changes.
 ### Notes
 
 Today's session focused on reviewing the environment instead of building something new. The goal going forward is to understand how the current environment works, validate that it's configured correctly, and document it before adding more resources. New resources will only be added when they support a real operational need.
+
+## 2026-07-28 — Restoring SSH Access to the Linux VM
+
+The session began with restoring SSH access to the Linux VM after its scheduled auto-shutdown. The VM started normally, but every SSH attempt timed out, so the focus shifted to identifying what was blocking remote access.
+
+### What happened
+
+The Public IP resource still existed in the resource group but was no longer attached to the VM's network interface. Reattaching the existing Public IP restored external connectivity without creating a new resource.
+
+The SSH private key was also unusable after being renamed with a `.pem.txt` extension. After enabling file extension visibility and changing the filename back to `.pem`, the key was recognized correctly.
+
+SSH continued to time out until the Network Security Group was checked. It only contained the default inbound rules, and no rule allowed SSH traffic. An inbound rule for TCP port 22 was added and restricted to the current public IP.
+
+With the Public IP attached, the key corrected, and the NSG updated, SSH access was restored and the `azureuser` account successfully authenticated.
+
+### What was learned
+
+SSH access depends on several components working together:
+
+- VM running
+- Public IP attached
+- Correct private key
+- NSG rule permitting port 22
+- Valid user account
+
+A misconfiguration in any one of these results in a connection failure, so verifying each dependency individually is more effective than guessing.
+
+Restricting SSH access to a single source IP is a simple but effective improvement over allowing access from any address.
+
+### Takeaway
+
+An unrelated issue surfaced during troubleshooting but didn't block the session's objective. It was noted for later review rather than becoming the new focus. Staying centered on the primary task keeps the project moving without getting pulled into unnecessary detours.
+
+### Current Status
+
+- Linux VM is running
+- Public IP reattached
+- SSH private key corrected
+- NSG allows SSH from the current public IP
+- Remote access restored
+
+SSH access has been restored and the VM is ready for administration.
